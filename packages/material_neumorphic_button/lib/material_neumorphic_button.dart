@@ -1,13 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide AnimatedScale;
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-// import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
-// import '../theme/neumorphic_theme.dart';
-// import '../widget/app_bar.dart';
-// import 'animation/animated_scale.dart' as animationScale;
-// import 'container.dart';
+import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
-typedef void NeumorphicButtonClickListener();
+typedef NeumorphicButtonClickListener = void Function();
 
 /// A Neumorphic Button
 ///
@@ -79,7 +74,7 @@ class NeumorphicButton extends StatefulWidget {
   bool get isEnabled => onPressed != null;
 
   @override
-  _NeumorphicButtonState createState() => _NeumorphicButtonState();
+  State<NeumorphicButton> createState() => _NeumorphicButtonState();
 }
 
 class _NeumorphicButtonState extends State<NeumorphicButton> {
@@ -90,11 +85,8 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
 
   void updateInitialStyle() {
     final theme = Theme.of(context);
-    this.initialStyle = widget.style ??
-        (appBarPresent
-            ? theme.appBarTheme.buttonStyle
-            : (theme.buttonStyle ?? const NeumorphicStyle()));
-    depth = widget.style?.depth ?? theme.depth ?? 0.0;
+    initialStyle = widget.style ?? const NeumorphicStyle();
+    depth = widget.style?.depth ?? theme.neumorphic.depth;
 
     setState(() {});
   }
@@ -171,9 +163,6 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
   }
 
   Widget _build(BuildContext context) {
-    final appBarPresent = NeumorphicAppBarTheme.of(context) != null;
-    final appBarTheme = NeumorphicTheme.currentTheme(context).appBarTheme;
-
     return GestureDetector(
       onTapDown: (detail) {
         hasTapUp = false;
@@ -192,7 +181,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
         hasTapUp = true;
         _resetIfTapUp();
       },
-      child: animationScale.AnimatedScale(
+      child: AnimatedScale(
         scale: _getScale(),
         child: Neumorphic(
           margin: widget.margin ?? const EdgeInsets.all(0),
@@ -200,7 +189,6 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
           duration: widget.duration,
           curve: widget.curve,
           padding: widget.padding ??
-              (appBarPresent ? appBarTheme.buttonPadding : null) ??
               const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
           style: initialStyle.copyWith(
             depth: _getDepth(),
@@ -213,7 +201,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
 
   double _getDepth() {
     if (widget.isEnabled) {
-      return this.depth;
+      return depth;
     } else {
       return 0;
     }
@@ -226,7 +214,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
           ? NeumorphicButton.PRESSED_SCALE
           : NeumorphicButton.UNPRESSED_SCALE;
     } else {
-      return this.pressed
+      return pressed
           ? NeumorphicButton.PRESSED_SCALE
           : NeumorphicButton.UNPRESSED_SCALE;
     }

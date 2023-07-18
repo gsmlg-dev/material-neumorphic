@@ -9,6 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  material_neumorphic_theme:
+    path: "../material_neumorphic_theme"
 
 dev_dependencies:
   flutter_test:
