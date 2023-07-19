@@ -84,9 +84,9 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
   bool pressed = false; //overwrite widget.pressed when click for animation
 
   void updateInitialStyle() {
-    final theme = Theme.of(context);
+    final theme = Theme.of(context).extension<NeumorphicTheme>();
     initialStyle = widget.style ?? const NeumorphicStyle();
-    depth = widget.style?.depth ?? theme.neumorphic.depth;
+    depth = widget.style?.depth ?? theme?.depth ?? 0.0;
 
     setState(() {});
   }
@@ -132,9 +132,10 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
   //used to stay pressed if no tap up
   void _resetIfTapUp() {
     if (hasFinishedAnimationDown == true && hasTapUp == true && !hasDisposed) {
+      final theme = Theme.of(context).extension<NeumorphicTheme>();
       setState(() {
         pressed = false;
-        depth = initialStyle.depth ?? neumorphicDefaultTheme.depth;
+        depth = initialStyle.depth ?? theme?.depth ?? 0.0;
 
         hasFinishedAnimationDown = false;
         hasTapUp = false;

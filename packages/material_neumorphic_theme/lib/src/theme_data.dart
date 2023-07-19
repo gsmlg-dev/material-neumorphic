@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart' show IconThemeData, TextTheme;
+import 'package:flutter/material.dart'
+    show IconThemeData, TextTheme, ThemeExtension, Color;
 import 'package:flutter/painting.dart';
 
 import 'box_shape.dart';
@@ -35,7 +36,7 @@ const double _defaultBorderSize = 0.3;
 /// @see [LightSource]
 ///
 @immutable
-class NeumorphicThemeData {
+class NeumorphicThemeData extends ThemeExtension<NeumorphicThemeData> {
   final Color baseColor;
   final Color accentColor;
   final Color variantColor;
@@ -176,6 +177,7 @@ class NeumorphicThemeData {
 
   /// Create a copy of this theme
   /// With possibly new values given from this method's arguments
+  @override
   NeumorphicThemeData copyWith({
     Color? baseColor,
     Color? accentColor,
@@ -220,6 +222,23 @@ class NeumorphicThemeData {
       borderColor: borderColor ?? this.borderColor,
       intensity: intensity ?? _intensity,
       lightSource: lightSource ?? this.lightSource,
+    );
+  }
+
+  @override
+  NeumorphicThemeData lerp(NeumorphicThemeData? other, double t) {
+    if (other is! NeumorphicThemeData) {
+      return this;
+    }
+    return NeumorphicThemeData(
+      baseColor: Color.lerp(baseColor, other.baseColor, t)!,
+      shadowDarkColor: Color.lerp(shadowDarkColor, other.shadowDarkColor, t)!,
+      shadowLightColor:
+          Color.lerp(shadowLightColor, other.shadowLightColor, t)!,
+      shadowDarkColorEmboss:
+          Color.lerp(shadowDarkColorEmboss, other.shadowDarkColorEmboss, t)!,
+      shadowLightColorEmboss:
+          Color.lerp(shadowLightColorEmboss, other.shadowLightColorEmboss, t)!,
     );
   }
 

@@ -4,6 +4,7 @@ import '../material_neumorphic_theme.dart';
 import 'box_shape.dart';
 import 'box_shape_clipper.dart';
 import 'decoration/neumorphic_decorations.dart';
+import 'extension.dart';
 import 'style.dart';
 
 /// The main container of the Neumorphic UI KIT
@@ -32,7 +33,7 @@ import 'style.dart';
 ///
 @immutable
 class Neumorphic extends StatelessWidget {
-  static const DEFAULT_DURATION = const Duration(milliseconds: 100);
+  static const DEFAULT_DURATION = Duration(milliseconds: 100);
   static const DEFAULT_CURVE = Curves.linear;
 
   static const double MIN_DEPTH = -20.0;
@@ -47,7 +48,6 @@ class Neumorphic extends StatelessWidget {
   final Widget? child;
 
   final NeumorphicStyle? style;
-  final TextStyle? textStyle;
   final EdgeInsets padding;
   final EdgeInsets margin;
   final Curve curve;
@@ -61,7 +61,6 @@ class Neumorphic extends StatelessWidget {
     this.duration = Neumorphic.DEFAULT_DURATION,
     this.curve = Neumorphic.DEFAULT_CURVE,
     this.style,
-    this.textStyle,
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(0),
     this.drawSurfaceAboveChild = true,
@@ -69,14 +68,14 @@ class Neumorphic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final NeumorphicTheme? neumorphicTheme =
+        Theme.of(context).extension<NeumorphicTheme>();
     final NeumorphicStyle style = (this.style ?? NeumorphicStyle())
-        .copyWithThemeIfNull(theme.neumorphic)
+        .copyWithThemeIfNull(NeumorphicThemeData())
         .applyDisableDepth();
 
     return _NeumorphicContainer(
       padding: padding,
-      textStyle: textStyle,
       drawSurfaceAboveChild: drawSurfaceAboveChild,
       duration: duration,
       style: style,
@@ -89,7 +88,6 @@ class Neumorphic extends StatelessWidget {
 
 class _NeumorphicContainer extends StatelessWidget {
   final NeumorphicStyle style;
-  final TextStyle? textStyle;
   final Widget? child;
   final EdgeInsets margin;
   final Duration duration;
@@ -100,7 +98,6 @@ class _NeumorphicContainer extends StatelessWidget {
   _NeumorphicContainer({
     Key? key,
     this.child,
-    this.textStyle,
     required this.padding,
     required this.margin,
     required this.duration,
@@ -113,33 +110,30 @@ class _NeumorphicContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final shape = style.boxShape ?? NeumorphicBoxShape.rect();
 
-    return DefaultTextStyle(
-      style: textStyle ?? Theme.of(context).textTheme.bodyMedium!,
-      child: AnimatedContainer(
-        margin: margin,
-        duration: duration,
-        curve: curve,
-        child: NeumorphicBoxShapeClipper(
-          shape: shape,
-          child: Padding(
-            padding: padding,
-            child: child,
-          ),
+    return AnimatedContainer(
+      margin: margin,
+      duration: duration,
+      curve: curve,
+      child: NeumorphicBoxShapeClipper(
+        shape: shape,
+        child: Padding(
+          padding: padding,
+          child: child,
         ),
-        foregroundDecoration: NeumorphicDecoration(
-          isForeground: true,
-          renderingByPath: shape.customShapePathProvider.oneGradientPerPath,
-          splitBackgroundForeground: drawSurfaceAboveChild,
-          style: style,
-          shape: shape,
-        ),
-        decoration: NeumorphicDecoration(
-          isForeground: false,
-          renderingByPath: shape.customShapePathProvider.oneGradientPerPath,
-          splitBackgroundForeground: drawSurfaceAboveChild,
-          style: style,
-          shape: shape,
-        ),
+      ),
+      foregroundDecoration: NeumorphicDecoration(
+        isForeground: true,
+        renderingByPath: shape.customShapePathProvider.oneGradientPerPath,
+        splitBackgroundForeground: drawSurfaceAboveChild,
+        style: style,
+        shape: shape,
+      ),
+      decoration: NeumorphicDecoration(
+        isForeground: false,
+        renderingByPath: shape.customShapePathProvider.oneGradientPerPath,
+        splitBackgroundForeground: drawSurfaceAboveChild,
+        style: style,
+        shape: shape,
       ),
     );
   }

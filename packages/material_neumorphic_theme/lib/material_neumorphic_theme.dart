@@ -11,11 +11,6 @@ export 'src/light_source.dart';
 export 'src/shape.dart';
 export 'src/style.dart';
 export 'src/theme_data.dart';
+export 'src/extension.dart';
 
 export 'src/animation/animated_scale.dart';
-
-extension NeumorphicTheme on ThemeData {
-  NeumorphicThemeData get neumorphic {
-    return NeumorphicThemeData();
-  }
-}
