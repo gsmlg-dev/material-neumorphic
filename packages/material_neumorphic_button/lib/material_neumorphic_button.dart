@@ -38,8 +38,8 @@ typedef NeumorphicButtonClickListener = void Function();
 ///
 @immutable
 class NeumorphicButton extends StatefulWidget {
-  static const double PRESSED_SCALE = 0.98;
-  static const double UNPRESSED_SCALE = 1.0;
+  static const double pressedScale = 0.98;
+  static const double unpressedScale = 1.0;
 
   final Widget? child;
   final NeumorphicStyle? style;
@@ -217,12 +217,12 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
     if (widget.pressed != null) {
       //defined by the widget that use it
       return widget.pressed!
-          ? NeumorphicButton.PRESSED_SCALE
-          : NeumorphicButton.UNPRESSED_SCALE;
+          ? NeumorphicButton.pressedScale
+          : NeumorphicButton.unpressedScale;
     } else {
       return pressed
-          ? NeumorphicButton.PRESSED_SCALE
-          : NeumorphicButton.UNPRESSED_SCALE;
+          ? NeumorphicButton.pressedScale
+          : NeumorphicButton.unpressedScale;
     }
   }
 }
