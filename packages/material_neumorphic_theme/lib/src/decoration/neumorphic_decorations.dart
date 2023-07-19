@@ -2,12 +2,13 @@ import 'dart:ui';
 
 import 'package:flutter/widgets.dart';
 
+import 'neumorphic_decoration_painter.dart';
+import 'neumorphic_emboss_decoration_painter.dart';
+
 import '../border.dart';
 import '../box_shape.dart';
 import '../light_source.dart';
 import '../style.dart';
-import 'neumorphic_decoration_painter.dart';
-import 'neumorphic_emboss_decoration_painter.dart';
 
 @immutable
 class NeumorphicDecoration extends Decoration {

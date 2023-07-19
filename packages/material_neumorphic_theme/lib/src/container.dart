@@ -1,36 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../material_neumorphic_theme.dart';
 import 'box_shape.dart';
 import 'box_shape_clipper.dart';
 import 'decoration/neumorphic_decorations.dart';
-import 'extension.dart';
+import 'theme.dart';
 import 'style.dart';
 
-/// The main container of the Neumorphic UI KIT
-/// it takes a Neumorphic style @see [NeumorphicStyle]
-///
-/// it's clipped using a [NeumorphicBoxShape] (circle, roundrect, stadium)
-///
-/// It can be, depending on its [NeumorphicStyle.shape] : [NeumorphicShape.concave],  [NeumorphicShape.convex],  [NeumorphicShape.flat]
-///
-/// if [NeumorphicStyle.depth] < 0 ----> use the emboss shape
-///
-/// The container animates any change for you, with [duration] ! (including style / theme / size / etc.)
-///
-/// [drawSurfaceAboveChild] enable to draw emboss, concave, convex effect above this widget child
-///
-/// drawSurfaceAboveChild - UseCase 1 :
-///
-///   put an image inside a neumorphic(concave) :
-///   drawSurfaceAboveChild=false -> the concave effect is below the image
-///   drawSurfaceAboveChild=true -> the concave effect is above the image, the image seems concave
-///
-/// drawSurfaceAboveChild - UseCase 2 :
-///   put an image inside a neumorphic(emboss) :
-///   drawSurfaceAboveChild=false -> the emboss effect is below the image -> not visible
-///   drawSurfaceAboveChild=true -> the emboss effeect effect is above the image -> visible
-///
 @immutable
 class Neumorphic extends StatelessWidget {
   static const DEFAULT_DURATION = Duration(milliseconds: 100);
@@ -71,10 +46,11 @@ class Neumorphic extends StatelessWidget {
     final NeumorphicTheme? neumorphicTheme =
         Theme.of(context).extension<NeumorphicTheme>();
     final NeumorphicStyle style = (this.style ?? NeumorphicStyle())
-        .copyWithThemeIfNull(NeumorphicThemeData())
+        .copyWithTheme(neumorphicTheme!)
         .applyDisableDepth();
 
     return _NeumorphicContainer(
+      color: style.color!,
       padding: padding,
       drawSurfaceAboveChild: drawSurfaceAboveChild,
       duration: duration,
@@ -87,6 +63,7 @@ class Neumorphic extends StatelessWidget {
 }
 
 class _NeumorphicContainer extends StatelessWidget {
+  final Color color;
   final NeumorphicStyle style;
   final Widget? child;
   final EdgeInsets margin;
@@ -98,6 +75,7 @@ class _NeumorphicContainer extends StatelessWidget {
   _NeumorphicContainer({
     Key? key,
     this.child,
+    required this.color,
     required this.padding,
     required this.margin,
     required this.duration,

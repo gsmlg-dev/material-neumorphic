@@ -13,31 +13,37 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final Color seedColor = Color.fromARGB(255, 232, 186, 47);
+    final colorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.light, seedColor: seedColor);
+    final darkColorScheme =
+        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Neumorphic Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: colorScheme,
         useMaterial3: true,
+      ).copyWith(
+        extensions: <ThemeExtension<dynamic>>[
+          const NeumorphicTheme().fitWithColorSchema(colorScheme),
+        ],
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      darkTheme: ThemeData(
+        colorScheme: darkColorScheme,
+        useMaterial3: true,
+      ).copyWith(
+        extensions: <ThemeExtension<dynamic>>[
+          const NeumorphicTheme().fitWithColorSchema(darkColorScheme),
+        ],
+      ),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -68,24 +74,20 @@ class _MyHomePageState extends State<MyHomePage> {
               const Text(
                 'You have pushed the button this many times:',
               ),
-              Text(
-                '$_counter',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
+              const SizedBox(height: 20),
+              Text('$_counter',
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                        color: Theme.of(context).colorScheme.primary,
+                      )),
+              const SizedBox(height: 20),
               NeumorphicButton(
-                child: const Text('Click Me'),
-                onPressed: () {
-                  print('Pressed: NeumophicButton');
-                },
-              )
+                onPressed: _incrementCounter,
+                tooltip: 'Increment',
+                child: const Text('Click Me to Plus One'),
+              ),
             ],
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }

@@ -184,17 +184,22 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
       },
       child: AnimatedScale(
         scale: _getScale(),
-        child: Neumorphic(
-          margin: widget.margin ?? const EdgeInsets.all(0),
-          drawSurfaceAboveChild: widget.drawSurfaceAboveChild,
-          duration: widget.duration,
-          curve: widget.curve,
-          padding: widget.padding ??
-              const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-          style: initialStyle.copyWith(
-            depth: _getDepth(),
+        child: MouseRegion(
+          cursor: widget.isEnabled
+              ? SystemMouseCursors.click
+              : SystemMouseCursors.basic,
+          child: Neumorphic(
+            margin: widget.margin ?? const EdgeInsets.all(0),
+            drawSurfaceAboveChild: widget.drawSurfaceAboveChild,
+            duration: widget.duration,
+            curve: widget.curve,
+            padding: widget.padding ??
+                const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+            style: initialStyle.copyWith(
+              depth: _getDepth(),
+            ),
+            child: widget.child,
           ),
-          child: widget.child,
         ),
       ),
     );

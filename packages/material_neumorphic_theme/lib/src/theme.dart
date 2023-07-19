@@ -13,22 +13,27 @@ const Color _defaultAccent = NeumorphicColors.accent;
 const Color _defaultVariant = NeumorphicColors.variant;
 const Color _defaultDisabledColor = NeumorphicColors.disabled;
 const Color _defaultTextColor = NeumorphicColors.defaultTextColor;
-const LightSource _defaultLightSource = LightSource.topLeft;
 const Color _defaultBaseColor = NeumorphicColors.background;
 const double _defaultBorderSize = 0.3;
 const NeumorphicShape _defaultShape = NeumorphicShape.flat;
 
 class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
+  final Color baseColor;
+  final Color accentColor;
+  final Color variantColor;
+  final Color disabledColor;
+
   final Color? color;
-  final double? _depth;
-  final double? _intensity;
+  final double _depth;
+  final double _intensity;
   final double _surfaceIntensity;
   final LightSource lightSource;
-  final bool? disableDepth;
 
   final NeumorphicBorder border;
 
   final bool oppositeShadowLightSource;
+
+  final Color defaultTextColor;
 
   final NeumorphicShape shape;
   final NeumorphicBoxShape? boxShape;
@@ -38,11 +43,11 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
   //override the "white" color
   final Color? shadowLightColor;
 
-  //override the "dark" color
-  final Color? shadowDarkColor;
-
   //override the "white" color
   final Color? shadowLightColorEmboss;
+
+  //override the "dark" color
+  final Color? shadowDarkColor;
 
   //override the "dark" color
   final Color? shadowDarkColorEmboss;
@@ -51,50 +56,31 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     this.shape = _defaultShape,
     this.lightSource = LightSource.topLeft,
     this.border = const NeumorphicBorder.none(),
-    this.color,
+    this.baseColor = _defaultBaseColor,
+    this.accentColor = _defaultAccent,
+    this.variantColor = _defaultVariant,
+    this.disabledColor = _defaultDisabledColor,
+    this.color = _defaultBaseColor,
     this.boxShape, //nullable by default, will use the one defined in theme if not set
-    this.shadowLightColor,
-    this.shadowDarkColor,
-    this.shadowLightColorEmboss,
-    this.shadowDarkColorEmboss,
+    this.shadowLightColor = const Color.fromARGB(255, 214, 99, 99),
+    this.shadowLightColorEmboss = const Color.fromARGB(153, 228, 133, 133),
+    this.shadowDarkColor = const Color.fromARGB(136, 5, 102, 1),
+    this.shadowDarkColorEmboss = const Color.fromARGB(115, 21, 63, 26),
+    this.oppositeShadowLightSource = false,
+    this.borderColor = const Color.fromARGB(51, 203, 110, 110),
+    this.borderWidth = _defaultBorderSize,
+    this.defaultTextColor = _defaultTextColor,
     double? depth,
     double? intensity,
-    double surfaceIntensity = 0.25,
-    this.disableDepth,
-    this.oppositeShadowLightSource = false,
-    this.borderColor = NeumorphicColors.defaultBorder,
-    this.borderWidth = _defaultBorderSize,
-  })  : _depth = depth,
-        _intensity = intensity,
-        _surfaceIntensity = surfaceIntensity;
+    double? surfaceIntensity,
+  })  : _depth = depth ?? _defaultDepth,
+        _intensity = intensity ?? _defaultIntensity,
+        _surfaceIntensity = surfaceIntensity ?? 0.25;
 
-  // with theme constructor is only available privately, please use copyWithThemeIfNull
-  const NeumorphicTheme._withTheme({
-    this.shape = _defaultShape,
-    this.lightSource = LightSource.topLeft,
-    this.color,
-    this.boxShape,
-    this.border = const NeumorphicBorder.none(),
-    this.shadowLightColor,
-    this.shadowDarkColor,
-    this.shadowLightColorEmboss,
-    this.shadowDarkColorEmboss,
-    this.oppositeShadowLightSource = false,
-    this.disableDepth,
-    double? depth,
-    double? intensity,
-    double surfaceIntensity = 0.25,
-    this.borderColor = NeumorphicColors.defaultBorder,
-    this.borderWidth = _defaultBorderSize,
-  })  : _depth = depth,
-        _intensity = intensity,
-        _surfaceIntensity = surfaceIntensity;
-
-  double? get depth =>
-      _depth?.clamp(Neumorphic.MIN_DEPTH, Neumorphic.MAX_DEPTH);
+  double? get depth => _depth.clamp(Neumorphic.MIN_DEPTH, Neumorphic.MAX_DEPTH);
 
   double? get intensity =>
-      _intensity?.clamp(Neumorphic.MIN_INTENSITY, Neumorphic.MAX_INTENSITY);
+      _intensity.clamp(Neumorphic.MIN_INTENSITY, Neumorphic.MAX_INTENSITY);
 
   double get surfaceIntensity => _surfaceIntensity.clamp(
       Neumorphic.MIN_INTENSITY, Neumorphic.MAX_INTENSITY);
@@ -111,7 +97,6 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
           shadowLightColor == other.shadowLightColor &&
           shadowDarkColorEmboss == other.shadowDarkColorEmboss &&
           shadowLightColorEmboss == other.shadowLightColorEmboss &&
-          disableDepth == other.disableDepth &&
           _depth == other._depth &&
           _intensity == other._intensity &&
           _surfaceIntensity == other._surfaceIntensity &&
@@ -130,7 +115,6 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
       _depth.hashCode ^
       border.hashCode ^
       _intensity.hashCode ^
-      disableDepth.hashCode ^
       _surfaceIntensity.hashCode ^
       lightSource.hashCode ^
       oppositeShadowLightSource.hashCode ^
@@ -139,6 +123,7 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
   @override
   NeumorphicTheme copyWith({
     Color? color,
+    Color? accentColor,
     NeumorphicBorder? border,
     NeumorphicBoxShape? boxShape,
     Color? shadowLightColor,
@@ -149,13 +134,13 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     double? intensity,
     double? surfaceIntensity,
     LightSource? lightSource,
-    bool? disableDepth,
     double? borderRadius,
     bool? oppositeShadowLightSource,
     NeumorphicShape? shape,
   }) {
-    return NeumorphicTheme._withTheme(
+    return NeumorphicTheme(
       color: color ?? this.color,
+      accentColor: accentColor ?? this.accentColor,
       border: border ?? this.border,
       boxShape: boxShape ?? this.boxShape,
       shadowDarkColor: shadowDarkColor ?? this.shadowDarkColor,
@@ -167,7 +152,6 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
       depth: depth ?? this.depth,
       intensity: intensity ?? this.intensity,
       surfaceIntensity: surfaceIntensity ?? this.surfaceIntensity,
-      disableDepth: disableDepth ?? this.disableDepth,
       lightSource: lightSource ?? this.lightSource,
       oppositeShadowLightSource:
           oppositeShadowLightSource ?? this.oppositeShadowLightSource,
@@ -191,16 +175,27 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     );
   }
 
-  @override
-  String toString() {
-    return 'NeumorphicTheme{color: $color, boxShape: $boxShape, _depth: $_depth, intensity: $intensity, disableDepth: $disableDepth, lightSource: $lightSource, shape: $shape, oppositeShadowLightSource: $oppositeShadowLightSource}';
+  NeumorphicTheme fitWithColorSchema(ColorScheme colorScheme) {
+    return copyWith(
+      color: colorScheme.secondaryContainer,
+      accentColor: colorScheme.primary,
+      shadowLightColor: colorScheme.brightness == Brightness.light
+          ? colorScheme.surface
+          : colorScheme.onSurface,
+      shadowLightColorEmboss: colorScheme.brightness == Brightness.light
+          ? colorScheme.surfaceVariant
+          : colorScheme.onSurfaceVariant,
+      shadowDarkColor: colorScheme.brightness == Brightness.light
+          ? colorScheme.onSurface
+          : colorScheme.surface,
+      shadowDarkColorEmboss: colorScheme.brightness == Brightness.light
+          ? colorScheme.onSurfaceVariant
+          : colorScheme.surfaceVariant,
+    );
   }
 
-  NeumorphicTheme applyDisableDepth() {
-    if (disableDepth == true) {
-      return copyWith(depth: 0);
-    } else {
-      return this;
-    }
+  @override
+  String toString() {
+    return 'NeumorphicTheme{color: $color, boxShape: $boxShape, _depth: $_depth, intensity: $intensity, lightSource: $lightSource, shape: $shape, oppositeShadowLightSource: $oppositeShadowLightSource}';
   }
 }
