@@ -209,7 +209,7 @@ class NeumorphicRadio<T> extends StatelessWidget {
         ? theme.colorScheme.onPrimary
         : theme.colorScheme.onPrimaryContainer;
     final TextStyle textStyle =
-        theme.textTheme.bodyText2!.copyWith(color: textColor);
+        theme.textTheme.bodyMedium!.copyWith(color: textColor);
 
     return NeumorphicButton(
       onPressed: () {

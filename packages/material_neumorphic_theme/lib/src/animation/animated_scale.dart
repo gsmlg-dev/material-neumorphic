@@ -34,7 +34,7 @@ class AnimatedScale extends StatefulWidget {
   });
 
   @override
-  _AnimatedScaleState createState() => _AnimatedScaleState();
+  State<AnimatedScale> createState() => _AnimatedScaleState();
 }
 
 class _AnimatedScaleState extends State<AnimatedScale>
