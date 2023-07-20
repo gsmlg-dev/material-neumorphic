@@ -1,6 +1,8 @@
 /// Define the neumorphic curve of the top of the widget
 ///
-/// @see https://github.com/gsmlg-dev/Flutter-Neumorphic/#-shapes
+///   - concave
+///   - convex
+///   - flat
 ///
 enum NeumorphicShape {
   concave,

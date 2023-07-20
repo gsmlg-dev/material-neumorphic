@@ -2,11 +2,9 @@ import 'package:flutter/material.dart' hide AnimatedScale;
 import 'package:flutter/services.dart';
 import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
-typedef NeumorphicButtonClickListener = void Function();
-
 /// A Neumorphic Button
 ///
-/// When pressed, it will fire a call to its [NeumorphicButtonClickListener] click parameter
+/// When pressed, it will fire a call to its [VoidCallback] `onPressed` click parameter
 /// The animation starts from style.depth (or theme.depth is not defined in the style)
 /// @see [NeumorphicStyle]
 ///
@@ -49,7 +47,7 @@ class NeumorphicButton extends StatefulWidget {
   final bool? pressed; //null, true, false
   final Duration duration;
   final Curve curve;
-  final NeumorphicButtonClickListener? onPressed;
+  final VoidCallback? onPressed;
   final bool drawSurfaceAboveChild;
   final bool provideHapticFeedback;
   final String? tooltip;

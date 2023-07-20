@@ -17,7 +17,11 @@ const Color _defaultBaseColor = NeumorphicColors.background;
 const double _defaultBorderSize = 0.3;
 const NeumorphicShape _defaultShape = NeumorphicShape.flat;
 
+@immutable
 class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
+  static const defaultDepth = _defaultDepth;
+  static const defaultIntensity = _defaultIntensity;
+
   final Color baseColor;
   final Color accentColor;
   final Color variantColor;
@@ -77,9 +81,9 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
         _intensity = intensity ?? _defaultIntensity,
         _surfaceIntensity = surfaceIntensity ?? 0.25;
 
-  double? get depth => _depth.clamp(Neumorphic.MIN_DEPTH, Neumorphic.MAX_DEPTH);
+  double get depth => _depth.clamp(Neumorphic.MIN_DEPTH, Neumorphic.MAX_DEPTH);
 
-  double? get intensity =>
+  double get intensity =>
       _intensity.clamp(Neumorphic.MIN_INTENSITY, Neumorphic.MAX_INTENSITY);
 
   double get surfaceIntensity => _surfaceIntensity.clamp(
