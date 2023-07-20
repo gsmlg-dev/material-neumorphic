@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = Color.fromARGB(255, 232, 186, 47);
+    const Color seedColor = Color.fromARGB(255, 232, 186, 47);
     final colorScheme = ColorScheme.fromSeed(
         brightness: Brightness.light, seedColor: seedColor);
     final darkColorScheme =
@@ -59,8 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final neumorphicTheme = theme.extension<NeumorphicTheme>();
+    // final theme = Theme.of(context);
+    // final neumorphicTheme = theme.extension<NeumorphicTheme>();
     return Scaffold(
       body: SafeArea(
         child: NeumorphicBackground(
@@ -80,39 +80,39 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         NeumorphicRadio(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          value: 1,
+                          groupValue: _groupValue,
+                          onChanged: _setGroupValue,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Center(
                               child: Text("Material Design"),
                             ),
                           ),
-                          value: 1,
-                          groupValue: _groupValue,
-                          onChanged: _setGroupValue,
                         ),
                         const SizedBox(width: 20),
                         NeumorphicRadio(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          value: 2,
+                          groupValue: _groupValue,
+                          onChanged: _setGroupValue,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Center(
                               child: Text("Cupertino Design"),
                             ),
                           ),
-                          value: 2,
-                          groupValue: _groupValue,
-                          onChanged: _setGroupValue,
                         ),
                         const SizedBox(width: 20),
                         NeumorphicRadio(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                          value: 3,
+                          groupValue: _groupValue,
+                          onChanged: _setGroupValue,
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
                             child: Center(
                               child: Text("Fluent Design"),
                             ),
                           ),
-                          value: 3,
-                          groupValue: _groupValue,
-                          onChanged: _setGroupValue,
                         ),
                       ],
                     ),

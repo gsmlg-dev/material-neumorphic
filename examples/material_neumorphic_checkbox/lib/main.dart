@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = Color.fromARGB(255, 232, 186, 47);
+    const Color seedColor = Color.fromARGB(255, 232, 186, 47);
     final colorScheme = ColorScheme.fromSeed(
         brightness: Brightness.light, seedColor: seedColor);
     final darkColorScheme =
@@ -55,8 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final neumorphicTheme = theme.extension<NeumorphicTheme>();
+    // final theme = Theme.of(context);
+    // final neumorphicTheme = theme.extension<NeumorphicTheme>();
     return Scaffold(
       body: SafeArea(
         child: NeumorphicBackground(
@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                         ),
                         const SizedBox(width: 10),
-                        Text('neumorphic'),
+                        const Text('neumorphic'),
                         const SizedBox(width: 20),
                         NeumorphicCheckbox(
                           value: _value2,
@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                         ),
                         const SizedBox(width: 10),
-                        Text('morphic'),
+                        const Text('morphic'),
                         const SizedBox(width: 20),
                         NeumorphicCheckbox(
                           value: _value3,
@@ -106,7 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                         ),
                         const SizedBox(width: 10),
-                        Text('flat'),
+                        const Text('flat'),
                       ],
                     ),
                   ],
