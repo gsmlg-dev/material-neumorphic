@@ -9,6 +9,8 @@ import 'cache/neumorphic_painter_cache.dart';
 import 'neumorphic_box_decoration_helper.dart';
 import 'neumorphic_emboss_decoration_painter.dart';
 
+const double _defaultIntensity = 0.7;
+
 class NeumorphicEmptyTextPainter extends BoxPainter {
   NeumorphicEmptyTextPainter({required VoidCallback onChanged})
       : super(onChanged);
@@ -113,7 +115,7 @@ class NeumorphicDecorationTextPainter extends BoxPainter {
       invalidateShadowColors = _cache.updateShadowColor(
         newShadowLightColorEmboss: style.shadowLightColor!,
         newShadowDarkColorEmboss: style.shadowDarkColor!,
-        newIntensity: style.intensity ?? neumorphicDefaultTheme.intensity,
+        newIntensity: style.intensity ?? _defaultIntensity,
       );
       if (invalidateShadowColors) {
         if (_cache.shadowLightColor != null) {

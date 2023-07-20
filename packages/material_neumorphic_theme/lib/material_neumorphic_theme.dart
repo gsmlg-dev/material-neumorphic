@@ -9,3 +9,4 @@ export 'src/style.dart';
 export 'src/theme.dart';
 
 export 'src/animation/animated_scale.dart';
+export 'src/decoration/neumorphic_text_decorations.dart';
