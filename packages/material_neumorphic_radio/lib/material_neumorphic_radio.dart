@@ -199,11 +199,17 @@ class NeumorphicRadio<T> extends StatelessWidget {
       depth = 0;
     }
 
+    final Color selectedColor =
+        this.style.selectedColor ?? theme.colorScheme.primary;
     final Color unselectedColor =
-        this.style.unselectedColor ?? neumorphicTheme.baseColor;
-    final Color selectedColor = this.style.selectedColor ?? unselectedColor;
+        this.style.unselectedColor ?? theme.colorScheme.primaryContainer;
 
     final Color color = isSelected ? selectedColor : unselectedColor;
+    final Color textColor = isSelected
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.onPrimaryContainer;
+    final TextStyle textStyle =
+        theme.textTheme.bodyText2!.copyWith(color: textColor);
 
     return NeumorphicButton(
       onPressed: () {
@@ -214,7 +220,10 @@ class NeumorphicRadio<T> extends StatelessWidget {
       padding: this.padding,
       pressed: isSelected,
       minDistance: selectedDepth,
-      child: this.child,
+      child: DefaultTextStyle(
+        style: textStyle,
+        child: this.child ?? Text(''),
+      ),
       style: NeumorphicStyle(
         border: this.style.border,
         color: color,

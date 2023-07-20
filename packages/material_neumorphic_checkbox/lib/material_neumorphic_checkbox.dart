@@ -115,7 +115,7 @@ class NeumorphicCheckboxStyle {
 class NeumorphicCheckbox extends StatelessWidget {
   final bool value;
   final NeumorphicCheckboxStyle style;
-  final ValueChanged<bool?> onChanged;
+  final ValueChanged<bool> onChanged;
   final bool isEnabled;
   final EdgeInsets padding;
   final EdgeInsets margin;
@@ -187,7 +187,6 @@ class NeumorphicCheckbox extends StatelessWidget {
       child: Icon(
         Icons.check,
         color: iconColor,
-        size: 20.0,
       ),
       style: NeumorphicStyle(
         boxShape: style.boxShape,
