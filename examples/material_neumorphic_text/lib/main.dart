@@ -64,13 +64,35 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Neumorphic(
               child: SizedBox(
                 width: 480.0,
-                height: 320.0,
+                height: 400.0,
                 child: Center(
-                  child: NeumorphicText(
-                      'Neumorphic Design is Simple and Beautiful',
-                      style: style.copyWith(
-                          color: theme.colorScheme.onSecondaryContainer),
-                      textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      NeumorphicText('Neumorphic Design',
+                          style: style.copyWith(
+                              depth: 4, color: theme.colorScheme.primary),
+                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                      NeumorphicText('is',
+                          style: style.copyWith(
+                              depth: 2, color: theme.colorScheme.onPrimary),
+                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                      NeumorphicText('Simple',
+                          style: style.copyWith(
+                              depth: 6,
+                              color: theme.colorScheme.onPrimaryContainer),
+                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                      NeumorphicText('and',
+                          style: style.copyWith(
+                              depth: 2, color: theme.colorScheme.onSecondary),
+                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                      NeumorphicText('Beautiful',
+                          style: style.copyWith(
+                              depth: 6,
+                              color: theme.colorScheme.onSecondaryContainer),
+                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                    ],
+                  ),
                 ),
               ),
             ),
