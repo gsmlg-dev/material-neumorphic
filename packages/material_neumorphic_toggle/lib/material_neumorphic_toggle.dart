@@ -95,7 +95,7 @@ class ToggleElement {
 /// does not save the state
 ///   - notifies a `ValueChanged<int>` : onChanged
 ///   - need a `selectedIndex` parameter
-///oggle
+///
 /// Expanded(
 ///  child: NeumorphicToggle(
 ///    height: 50,
@@ -128,7 +128,7 @@ class ToggleElement {
 ///),
 @immutable
 class NeumorphicToggle extends StatelessWidget {
-  static const MIN_EMBOSS_DEPTH = -1.0;
+  static const minEmbossDepth = -1.0;
 
   final EdgeInsets padding;
 
@@ -155,7 +155,7 @@ class NeumorphicToggle extends StatelessWidget {
     Key? key,
     required this.children,
     required this.thumb,
-    this.padding = const EdgeInsets.all(2),
+    this.padding = const EdgeInsets.all(4),
     this.duration = const Duration(milliseconds: 200),
     this.selectedIndex = 0,
     this.alphaAnimationCurve = Curves.linear,
@@ -191,7 +191,7 @@ class NeumorphicToggle extends StatelessWidget {
             child: Neumorphic(
               style: NeumorphicStyle(
                 boxShape: NeumorphicBoxShape.roundRect(style?.borderRadius ??
-                    BorderRadius.all(Radius.circular(12))),
+                    BorderRadius.all(Radius.circular(8))),
               ),
               margin: padding,
               child: thumb,
@@ -301,7 +301,7 @@ class NeumorphicToggle extends StatelessWidget {
 
     //force negative to have emboss
     final double depth = -1 * (style?.depth ?? neumorphicTheme.depth).abs();
-    return depth.clamp(Neumorphic.MIN_DEPTH, NeumorphicToggle.MIN_EMBOSS_DEPTH);
+    return depth.clamp(Neumorphic.MIN_DEPTH, NeumorphicToggle.minEmbossDepth);
   }
 
   void _notifyOnChange(int newValue) {
