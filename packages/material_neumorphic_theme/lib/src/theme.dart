@@ -19,6 +19,7 @@ const NeumorphicShape _defaultShape = NeumorphicShape.flat;
 
 @immutable
 class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
+  static const defaultSeedColor = Color.fromARGB(255, 221, 230, 232);
   static const defaultDepth = _defaultDepth;
   static const defaultIntensity = _defaultIntensity;
 

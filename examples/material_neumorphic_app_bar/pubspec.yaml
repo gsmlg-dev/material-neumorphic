@@ -1,0 +1,29 @@
+name: material_neumorphic_app_bar_example
+description: A new Flutter project.
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.0.6 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  material_neumorphic_theme:
+    path: "../../packages/material_neumorphic_theme"
+  material_neumorphic_background:
+    path: "../../packages/material_neumorphic_background"
+  material_neumorphic_button:
+    path: "../../packages/material_neumorphic_button"
+  material_neumorphic_app_bar:
+    path: "../../packages/material_neumorphic_app_bar"
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

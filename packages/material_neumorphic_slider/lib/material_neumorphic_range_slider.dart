@@ -141,7 +141,7 @@ class NeumorphicRangeSlider extends StatefulWidget {
       (((valueHigh.clamp(min, max)) - min) / ((max - min)));
 
   @override
-  createState() => _NeumorphicRangeSliderState();
+  State<NeumorphicRangeSlider> createState() => _NeumorphicRangeSliderState();
 }
 
 class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {

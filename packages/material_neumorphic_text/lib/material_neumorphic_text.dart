@@ -192,7 +192,7 @@ class _NeumorphicText extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  __NeumorphicTextState createState() => __NeumorphicTextState();
+  State<_NeumorphicText> createState() => __NeumorphicTextState();
 }
 
 class __NeumorphicTextState extends State<_NeumorphicText> {

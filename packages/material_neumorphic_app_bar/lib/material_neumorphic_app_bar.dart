@@ -80,6 +80,8 @@ class NeumorphicAppBar extends StatefulWidget implements PreferredSizeWidget {
 
   final double padding;
 
+  final double? depth;
+
   NeumorphicAppBar({
     Key? key,
     this.title,
@@ -95,6 +97,7 @@ class NeumorphicAppBar extends StatefulWidget implements PreferredSizeWidget {
     this.titleSpacing = NavigationToolbar.kMiddleSpacing,
     this.actionSpacing = defaultSpacing,
     this.padding = 16,
+    this.depth,
   })  : preferredSize = Size.fromHeight(toolbarHeight),
         super(key: key);
 
@@ -126,7 +129,7 @@ class _NeumorphicAppBarState extends State<NeumorphicAppBar> {
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
-    // final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
+    final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
     final ModalRoute<dynamic>? parentRoute = ModalRoute.of(context);
     final bool canPop = parentRoute?.canPop ?? false;
     final bool useCloseButton =
@@ -171,8 +174,11 @@ class _NeumorphicAppBarState extends State<NeumorphicAppBar> {
     Widget? title = widget.title;
     if (title != null) {
       title = DefaultTextStyle(
-        style:
-            Theme.of(context).textTheme.headlineSmall!.merge(widget.textStyle),
+        style: widget.textStyle ??
+            Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(color: theme.colorScheme.onPrimary),
         softWrap: false,
         overflow: TextOverflow.ellipsis,
         child: title,
@@ -208,23 +214,25 @@ class _NeumorphicAppBarState extends State<NeumorphicAppBar> {
         ),
       );
     }
-    return Container(
-      color: widget.color, // ?? neumorphicTheme.appBarTheme.color,
-      child: SafeArea(
-        bottom: false,
-        child: Padding(
-          padding: EdgeInsets.all(widget.padding),
-          child: IconTheme(
-            data: widget.iconTheme ??
-                // neumorphicTheme.appBarTheme.iconTheme ??
-                // neumorphicTheme.iconTheme ??
-                const IconThemeData(),
-            child: NavigationToolbar(
-              leading: leading,
-              middle: title,
-              trailing: actions,
-              centerMiddle: widget._getEffectiveCenterTitle(theme),
-              middleSpacing: widget.titleSpacing,
+    return Neumorphic(
+      style:
+          NeumorphicStyle(depth: widget.depth).copyWithTheme(neumorphicTheme),
+      child: Container(
+        color: widget.color ?? theme.colorScheme.primary,
+        child: SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: EdgeInsets.all(widget.padding),
+            child: IconTheme(
+              data: widget.iconTheme ??
+                  IconThemeData(color: theme.colorScheme.onPrimary),
+              child: NavigationToolbar(
+                leading: leading,
+                middle: title,
+                trailing: actions,
+                centerMiddle: widget._getEffectiveCenterTitle(theme),
+                middleSpacing: widget.titleSpacing,
+              ),
             ),
           ),
         ),
