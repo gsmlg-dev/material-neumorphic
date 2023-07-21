@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide AnimatedScale;
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
@@ -180,7 +180,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
         hasTapUp = true;
         _resetIfTapUp();
       },
-      child: AnimatedScale(
+      child: NeumorphicAnimatedScale(
         scale: _getScale(),
         child: MouseRegion(
           cursor: widget.isEnabled

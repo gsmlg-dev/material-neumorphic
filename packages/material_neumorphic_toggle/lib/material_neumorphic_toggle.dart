@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide AnimatedScale;
+import 'package:flutter/material.dart';
 import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
 class NeumorphicToggleStyle {

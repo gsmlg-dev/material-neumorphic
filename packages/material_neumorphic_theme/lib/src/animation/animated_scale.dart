@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 ///
 /// double _scale = 1;
 ///
-/// AnimatedScale(
+/// NeumorphicAnimatedScale(
 ///   scale: _scale,
 ///   child: /* a widget */
 /// )
@@ -20,13 +20,13 @@ import 'package:flutter/widgets.dart';
 ///
 /// This will aimate the child's scale from 1 to 0.5 in 150ms (default duration)
 ///
-class AnimatedScale extends StatefulWidget {
+class NeumorphicAnimatedScale extends StatefulWidget {
   final Widget? child;
   final double scale;
   final Duration duration;
   final Alignment alignment;
 
-  const AnimatedScale({
+  const NeumorphicAnimatedScale({
     this.child,
     this.scale = 1,
     this.duration = const Duration(milliseconds: 150),
@@ -34,10 +34,11 @@ class AnimatedScale extends StatefulWidget {
   });
 
   @override
-  State<AnimatedScale> createState() => _AnimatedScaleState();
+  State<NeumorphicAnimatedScale> createState() =>
+      _NeumorphicAnimatedScaleState();
 }
 
-class _AnimatedScaleState extends State<AnimatedScale>
+class _NeumorphicAnimatedScaleState extends State<NeumorphicAnimatedScale>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -52,7 +53,7 @@ class _AnimatedScaleState extends State<AnimatedScale>
   }
 
   @override
-  void didUpdateWidget(AnimatedScale oldWidget) {
+  void didUpdateWidget(NeumorphicAnimatedScale oldWidget) {
     if (oldWidget.scale != widget.scale) {
       _controller.reset();
       oldScale = oldWidget.scale;
