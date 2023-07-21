@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   material_neumorphic_theme:
     path: "../material_neumorphic_theme"
+  material_neumorphic_text:
+    path: "../material_neumorphic_text"
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +20,8 @@ dev_dependencies:
   lints: ^2.0.0
   test: ^1.21.0
 
+flutter:
+  fonts:
+    - family: NeumorphicIcons
+      fonts:
+        - asset: fonts/NeumorphicIcons.ttf
