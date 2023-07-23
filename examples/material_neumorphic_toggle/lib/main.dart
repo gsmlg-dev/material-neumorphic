@@ -143,11 +143,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           onChanged: (value) {
                             setState(() {
                               _selectedIndex = value;
-                              print("_firstSelected: $_selectedIndex");
                             });
                           },
                         ),
                       ),
+                      Center(
+                        child: Text(
+                          _mapName(_selectedIndex),
+                        ),
+                      )
                     ],
                   ),
                 ),
