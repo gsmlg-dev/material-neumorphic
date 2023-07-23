@@ -56,19 +56,76 @@ class _MyHomePageState extends State<MyHomePage> {
   _mapName(int idx) {
     switch (idx) {
       case 0:
-        return 'Superman';
+        // 18/77 15 19 12 9 7
+        return 'Berserker';
       case 1:
-        return 'Aquaman';
+        // 13 20 15 17 17 14
+        return 'Ranger';
       case 2:
-        return 'Batman';
+        // 22 20 22 15 15 13
+        return 'Monk';
       default:
         return 'Unknown';
+    }
+  }
+
+  mapAttr(int idx, int attr) {
+    switch (idx) {
+      case 0:
+        switch (attr) {
+          case 0:
+            return 18 / 25;
+          case 1:
+            return 15 / 25;
+          case 2:
+            return 19 / 25;
+          case 3:
+            return 12 / 25;
+          case 4:
+            return 9 / 25;
+          case 5:
+            return 7 / 25;
+        }
+      case 1:
+        switch (attr) {
+          case 0:
+            return 13 / 25;
+          case 1:
+            return 20 / 25;
+          case 2:
+            return 15 / 25;
+          case 3:
+            return 17 / 25;
+          case 4:
+            return 17 / 25;
+          case 5:
+            return 14 / 25;
+        }
+      case 2:
+        switch (attr) {
+          case 0:
+            return 22 / 25;
+          case 1:
+            return 20 / 25;
+          case 2:
+            return 22 / 25;
+          case 3:
+            return 15 / 25;
+          case 4:
+            return 15 / 25;
+          case 5:
+            return 13 / 25;
+        }
+      default:
+        return 0.0;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    // final width = 24.0;
+    const height = 24.0;
     return Scaffold(
       extendBody: true,
       extendBodyBehindAppBar: true,
@@ -84,6 +141,90 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
+                      Center(
+                        child: SizedBox(
+                          width: 360,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  const Text('Strength',
+                                      textAlign: TextAlign.start),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 0),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Column(
+                                children: [
+                                  const Text('Dexterity'),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 1),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Column(
+                                children: [
+                                  const Text('Constitution'),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 2),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Column(
+                                children: [
+                                  const Text('Intelligence'),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 3),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Column(
+                                children: [
+                                  const Text('Wisdom'),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 4),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Column(
+                                children: [
+                                  const Text('Charisma'),
+                                  NeumorphicIndicator(
+                                    orientation: NeumorphicIndicatorOrientation
+                                        .horizontal,
+                                    height: height,
+                                    percent: mapAttr(_selectedIndex, 5),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.all(24.0),
                         child: NeumorphicToggle(
@@ -94,36 +235,36 @@ class _MyHomePageState extends State<MyHomePage> {
                             ToggleElement(
                               background: const Center(
                                   child: Text(
-                                'Superman',
+                                'Berserker',
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               )),
                               foreground: const Center(
                                   child: Text(
-                                'Superman',
+                                'Berserker',
                                 style: TextStyle(fontWeight: FontWeight.w700),
                               )),
                             ),
                             ToggleElement(
                               background: const Center(
                                   child: Text(
-                                'Aquaman',
+                                'Ranger',
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               )),
                               foreground: const Center(
                                   child: Text(
-                                'Aquaman',
+                                'Ranger',
                                 style: TextStyle(fontWeight: FontWeight.w700),
                               )),
                             ),
                             ToggleElement(
                               background: const Center(
                                   child: Text(
-                                'Batman',
+                                'Monk',
                                 style: TextStyle(fontWeight: FontWeight.w500),
                               )),
                               foreground: const Center(
                                   child: Text(
-                                'Batman',
+                                'Monk',
                                 style: TextStyle(fontWeight: FontWeight.w700),
                               )),
                             )
