@@ -8,7 +8,28 @@ environment:
 
 # Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  material_neumorphic_app_bar:
+    path: ../material_neumorphic_app_bar
+  material_neumorphic_background:
+    path: ../material_neumorphic_background
+  material_neumorphic_button:
+    path: ../material_neumorphic_button
+  material_neumorphic_checkbox:
+    path: ../material_neumorphic_checkbox
+  material_neumorphic_icon:
+    path: ../material_neumorphic_icon
+  material_neumorphic_indicator:
+    path: ../material_neumorphic_indicator
+  material_neumorphic_progress:
+    path: ../material_neumorphic_progress
+  material_neumorphic_radio:
+    path: ../material_neumorphic_radio
+  material_neumorphic_slider:
+    path: ../material_neumorphic_slider
+  material_neumorphic_switch:
+    path: ../material_neumorphic_switch
+  material_neumorphic_text:
+    path: ../material_neumorphic_text
 
 dev_dependencies:
   lints: ^2.0.0
