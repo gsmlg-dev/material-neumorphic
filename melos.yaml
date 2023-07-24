@@ -3,15 +3,16 @@ name: material-neumorphic
 packages:
   - packages/**
 
-command:
-  bootstrap:
-    usePubspecOverrides: true
+# command:
+#   bootstrap:
+#     usePubspecOverrides: true
 
 scripts:
+  format:
+    exec: dart fix --apply .
   analyze:
     exec: flutter analyze .
   outdated:
     exec: flutter pub outdated
   test:
     exec: flutter test
-

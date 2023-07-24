@@ -110,7 +110,7 @@ class NeumorphicSwitchStyle {
 ///
 @immutable
 class NeumorphicSwitch extends StatelessWidget {
-  static const MIN_EMBOSS_DEPTH = -1.0;
+  static const minEmbossDepth = -1.0;
 
   final bool value;
   final ValueChanged<bool>? onChanged;
@@ -206,7 +206,7 @@ class NeumorphicSwitch extends StatelessWidget {
     if (themeDepth == null) return themeDepth;
     //force negative to have emboss
     final double depth = -1 * (style.trackDepth ?? themeDepth).abs();
-    return depth.clamp(Neumorphic.minDepth, NeumorphicSwitch.MIN_EMBOSS_DEPTH);
+    return depth.clamp(Neumorphic.minDepth, NeumorphicSwitch.minEmbossDepth);
   }
 
   Color _getTrackColor(NeumorphicTheme theme, bool enabled) {

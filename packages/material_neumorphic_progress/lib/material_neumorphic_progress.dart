@@ -278,7 +278,9 @@ class _NeumorphicProgressIndeterminateState
       await _controller
           .repeat(min: 0, max: 1, reverse: widget.reverse)
           .orCancel;
-    } on TickerCanceled {}
+    } on TickerCanceled {
+      // the animation got canceled, probably because we were disposed
+    }
   }
 
   @override

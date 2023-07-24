@@ -9,10 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_neumorphic_theme:
-    path: "../material_neumorphic_theme"
-  material_neumorphic_progress:
-    path: "../material_neumorphic_progress"
+  material_neumorphic_theme: ^1.0.0
+  material_neumorphic_progress: ^1.0.0
 
 dev_dependencies:
   flutter_test:
