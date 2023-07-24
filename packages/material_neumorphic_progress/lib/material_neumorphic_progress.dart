@@ -26,7 +26,7 @@ class ProgressStyle {
   final NeumorphicBorder border;
 
   const ProgressStyle({
-    this.depth = 0,
+    this.depth = 4,
     this.disableDepth = false,
     this.borderRadius = const BorderRadius.all(Radius.circular(10.0)),
     this.gradientBorderRadius,

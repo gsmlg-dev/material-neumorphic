@@ -18,8 +18,8 @@ dependencies:
     path: "../../packages/material_neumorphic_background"
   material_neumorphic_toggle:
     path: "../../packages/material_neumorphic_toggle"
-  material_neumorphic_silder:
-    path: "../../packages/material_neumorphic_silder"
+  material_neumorphic_slider:
+    path: "../../packages/material_neumorphic_slider"
 
 dev_dependencies:
   flutter_test:
