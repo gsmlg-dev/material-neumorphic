@@ -7,6 +7,6 @@ export 'package:material_neumorphic_indicator/material_neumorphic_indicator.dart
 export 'package:material_neumorphic_progress/material_neumorphic_progress.dart';
 export 'package:material_neumorphic_radio/material_neumorphic_radio.dart';
 export 'package:material_neumorphic_slider/material_neumorphic_slider.dart';
-export 'package:material_neumorphic_slider/material_neumorphic_slider.dart';
+export 'package:material_neumorphic_slider/material_neumorphic_range_slider.dart';
 export 'package:material_neumorphic_switch/material_neumorphic_switch.dart';
 export 'package:material_neumorphic_text/material_neumorphic_text.dart';
