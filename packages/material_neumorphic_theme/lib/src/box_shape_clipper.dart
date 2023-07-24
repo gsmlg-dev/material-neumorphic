@@ -1,6 +1,5 @@
 import 'package:flutter/widgets.dart';
 
-import 'shape/neumorphic_path_provider.dart';
 import 'box_shape.dart';
 
 class NeumorphicBoxShapeClipper extends StatelessWidget {

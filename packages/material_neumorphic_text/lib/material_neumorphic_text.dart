@@ -146,8 +146,8 @@ class NeumorphicText extends StatelessWidget {
   NeumorphicText(
     this.text, {
     Key? key,
-    this.duration = Neumorphic.DEFAULT_DURATION,
-    this.curve = Neumorphic.DEFAULT_CURVE,
+    this.duration = Neumorphic.defaultDuration,
+    this.curve = Neumorphic.defaultCurve,
     this.style,
     this.textAlign = TextAlign.center,
     this.textStyle,

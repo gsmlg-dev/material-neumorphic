@@ -7,7 +7,6 @@ import '../shape.dart';
 import '../style.dart';
 import 'cache/neumorphic_painter_cache.dart';
 import 'neumorphic_box_decoration_helper.dart';
-import 'neumorphic_emboss_decoration_painter.dart';
 
 const double _defaultIntensity = 0.7;
 

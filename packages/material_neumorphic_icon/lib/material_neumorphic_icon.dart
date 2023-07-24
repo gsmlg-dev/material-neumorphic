@@ -23,8 +23,8 @@ class NeumorphicIcon extends StatelessWidget {
   NeumorphicIcon(
     this.icon, {
     Key? key,
-    this.duration = Neumorphic.DEFAULT_DURATION,
-    this.curve = Neumorphic.DEFAULT_CURVE,
+    this.duration = Neumorphic.defaultDuration,
+    this.curve = Neumorphic.defaultCurve,
     this.style,
     this.size = 20,
   }) : super(key: key);

@@ -6,7 +6,6 @@ import '../shape.dart';
 import '../style.dart';
 import 'cache/neumorphic_painter_cache.dart';
 import 'neumorphic_box_decoration_helper.dart';
-import 'neumorphic_emboss_decoration_painter.dart';
 
 class NeumorphicDecorationPainter extends BoxPainter {
   final NeumorphicStyle style;

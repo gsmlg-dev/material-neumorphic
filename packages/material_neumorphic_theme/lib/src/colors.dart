@@ -87,7 +87,7 @@ class NeumorphicColors {
   static Color _applyPercentageOnOpacity(
       {required Color maxColor, required double percent}) {
     final maxOpacity = maxColor.opacity;
-    final maxIntensity = Neumorphic.MAX_INTENSITY;
+    final maxIntensity = Neumorphic.maxIntensity;
     final newOpacity = percent * maxOpacity / maxIntensity;
     final newColor =
         maxColor.withOpacity(newOpacity); //<-- intensity act on opacity;

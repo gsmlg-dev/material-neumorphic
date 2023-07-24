@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import '../border.dart';
 import '../light_source.dart';
 import '../style.dart';
-import 'neumorphic_emboss_decoration_painter.dart';
 import 'neumorphic_text_decoration_painter.dart';
 
 @immutable

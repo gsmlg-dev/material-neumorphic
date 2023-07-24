@@ -12,9 +12,9 @@ class NeumorphicBorder {
   });
 
   const NeumorphicBorder.none()
-      : this.isEnabled = true,
-        this.color = const Color(0x00000000),
-        this.width = 0;
+      : isEnabled = true,
+        color = const Color(0x00000000),
+        width = 0;
 
   @override
   bool operator ==(Object other) =>
@@ -49,7 +49,7 @@ class NeumorphicBorder {
 
   NeumorphicBorder copyWithThemeIfNull({Color? color, double? width}) {
     return NeumorphicBorder(
-      isEnabled: this.isEnabled,
+      isEnabled: isEnabled,
       color: this.color ?? color,
       width: this.width ?? width,
     );

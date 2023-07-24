@@ -8,17 +8,17 @@ import 'style.dart';
 
 @immutable
 class Neumorphic extends StatelessWidget {
-  static const DEFAULT_DURATION = Duration(milliseconds: 100);
-  static const DEFAULT_CURVE = Curves.linear;
+  static const defaultDuration = Duration(milliseconds: 100);
+  static const defaultCurve = Curves.linear;
 
-  static const double MIN_DEPTH = -20.0;
-  static const double MAX_DEPTH = 20.0;
+  static const double minDepth = -20.0;
+  static const double maxDepth = 20.0;
 
-  static const double MIN_INTENSITY = 0.0;
-  static const double MAX_INTENSITY = 1.0;
+  static const double minIntensity = 0.0;
+  static const double maxIntensity = 1.0;
 
-  static const double MIN_CURVE = 0.0;
-  static const double MAX_CURVE = 1.0;
+  static const double minCurve = 0.0;
+  static const double maxCurve = 1.0;
 
   final Widget? child;
 
@@ -33,8 +33,8 @@ class Neumorphic extends StatelessWidget {
   Neumorphic({
     Key? key,
     this.child,
-    this.duration = Neumorphic.DEFAULT_DURATION,
-    this.curve = Neumorphic.DEFAULT_CURVE,
+    this.duration = Neumorphic.defaultDuration,
+    this.curve = Neumorphic.defaultCurve,
     this.style,
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(0),
