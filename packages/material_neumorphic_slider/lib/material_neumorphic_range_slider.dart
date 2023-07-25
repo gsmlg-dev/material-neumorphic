@@ -146,7 +146,6 @@ class NeumorphicRangeSlider extends StatefulWidget {
 
 class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
   late ActiveThumb _activeThumb;
-  late bool _canChangeActiveThumb;
 
   @override
   Widget build(BuildContext context) {
@@ -155,40 +154,36 @@ class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
     });
   }
 
-  Widget _widget(BuildContext context, BoxConstraints constraints) {
-    double thumbSize = widget.height * 1.5;
+  _panUpdateLow(DragUpdateDetails details, BoxConstraints constraints) {
+    final tapPos = details.localPosition;
+    final newPercent = tapPos.dx / constraints.maxWidth;
+    final newValue = ((widget.min + (widget.max - widget.min) * newPercent))
+        .clamp(widget.min, widget.max);
 
-    panUpdate(DragUpdateDetails details) {
-      final tapPos = details.localPosition;
-      final newPercent = tapPos.dx / constraints.maxWidth;
-      final newValue = ((widget.min + (widget.max - widget.min) * newPercent))
-          .clamp(widget.min, widget.max);
-
-      switch (_activeThumb) {
-        case ActiveThumb.low:
-          if (newValue < widget.valueHigh) {
-            _canChangeActiveThumb = false;
-            if (widget.onChangedLow != null) {
-              widget.onChangedLow!(newValue);
-            }
-          } else if (_canChangeActiveThumb && details.delta.dx > 0) {
-            _canChangeActiveThumb = false;
-            _activeThumb = ActiveThumb.high;
-          }
-          break;
-        case ActiveThumb.high:
-          if (newValue > widget.valueLow) {
-            _canChangeActiveThumb = false;
-            if (widget.onChangeHigh != null) {
-              widget.onChangeHigh!(newValue);
-            }
-          } else if (_canChangeActiveThumb && details.delta.dx < 0) {
-            _canChangeActiveThumb = false;
-            _activeThumb = ActiveThumb.low;
-          }
-          break;
+    if (newValue < widget.valueHigh) {
+      if (widget.onChangedLow != null) {
+        widget.onChangedLow!(newValue);
       }
     }
+  }
+
+  _panUpdateHigh(DragUpdateDetails details, BoxConstraints constraints) {
+    final tapPos = details.localPosition;
+    final newPercent = tapPos.dx / constraints.maxWidth;
+    final newValue = ((widget.min + (widget.max - widget.min) * newPercent))
+        .clamp(widget.min, widget.max);
+
+    if (newValue > widget.valueLow) {
+      if (widget.onChangeHigh != null) {
+        widget.onChangeHigh!(newValue);
+      }
+    }
+  }
+
+  Widget _widget(BuildContext context, BoxConstraints constraints) {
+    double thumbSize = widget.height * 1.5;
+    print(
+        "low: ${widget.valueLow}, high: ${widget.valueHigh}, min: ${widget.min}, max: ${widget.max}");
 
     return Stack(
       alignment: Alignment.center,
@@ -197,55 +192,59 @@ class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
           padding: EdgeInsets.only(left: thumbSize / 2, right: thumbSize / 2),
           child: _generateSlider(context),
         ),
-        Align(
-          alignment: Alignment(
-              //because left = -1 & right = 1, so the "width" = 2, and minValue = 1
-              (widget.percentLow * 2) - 1,
-              0),
-          child: GestureDetector(
-              onHorizontalDragStart: (DragStartDetails details) {
-                _canChangeActiveThumb = true;
-                _activeThumb = ActiveThumb.low;
-                if (widget.onPanStarted != null) {
-                  widget.onPanStarted!(_activeThumb);
-                }
-              },
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
-                panUpdate(details);
-              },
-              onHorizontalDragEnd: (details) {
-                if (widget.onPanEnded != null) {
-                  widget.onPanEnded!(_activeThumb);
-                }
-              },
-              child: widget.thumb ??
-                  _generateThumb(context, thumbSize, widget.style.variant)),
-        ),
-        Align(
-          alignment: Alignment(
-              //because left = -1 & right = 1, so the "width" = 2, and minValue = 1
-              (widget.percentHigh * 2) - 1,
-              0),
-          child: GestureDetector(
-              onHorizontalDragStart: (DragStartDetails details) {
-                _canChangeActiveThumb = true;
-                _activeThumb = ActiveThumb.high;
-                if (widget.onPanStarted != null) {
-                  widget.onPanStarted!(_activeThumb);
-                }
-              },
-              onHorizontalDragUpdate: (DragUpdateDetails details) {
-                panUpdate(details);
-              },
-              onHorizontalDragEnd: (details) {
-                if (widget.onPanEnded != null) {
-                  widget.onPanEnded!(_activeThumb);
-                }
-              },
-              child: widget.thumb ??
-                  _generateThumb(context, thumbSize, widget.style.accent)),
-        ),
+        _lowThumb(context, constraints),
+        _highThumb(context, constraints),
       ],
+    );
+  }
+
+  Widget _lowThumb(BuildContext context, BoxConstraints constraints) {
+    double thumbSize = widget.height * 1.5;
+
+    return Align(
+      alignment: Alignment((widget.percentLow * 2) - 1, 0),
+      child: GestureDetector(
+          onHorizontalDragStart: (DragStartDetails details) {
+            _activeThumb = ActiveThumb.low;
+            if (widget.onPanStarted != null) {
+              widget.onPanStarted!(_activeThumb);
+            }
+          },
+          onHorizontalDragUpdate: (DragUpdateDetails details) {
+            _panUpdateLow(details, constraints);
+          },
+          onHorizontalDragEnd: (details) {
+            if (widget.onPanEnded != null) {
+              widget.onPanEnded!(_activeThumb);
+            }
+          },
+          child: widget.thumb ??
+              _generateThumb(context, thumbSize, widget.style.variant)),
+    );
+  }
+
+  Widget _highThumb(BuildContext context, BoxConstraints constraints) {
+    double thumbSize = widget.height * 1.5;
+
+    return Align(
+      alignment: Alignment((widget.percentHigh * 2) - 1, 0),
+      child: GestureDetector(
+          onHorizontalDragStart: (DragStartDetails details) {
+            _activeThumb = ActiveThumb.high;
+            if (widget.onPanStarted != null) {
+              widget.onPanStarted!(_activeThumb);
+            }
+          },
+          onHorizontalDragUpdate: (DragUpdateDetails details) {
+            _panUpdateHigh(details, constraints);
+          },
+          onHorizontalDragEnd: (details) {
+            if (widget.onPanEnded != null) {
+              widget.onPanEnded!(_activeThumb);
+            }
+          },
+          child: widget.thumb ??
+              _generateThumb(context, thumbSize, widget.style.accent)),
     );
   }
 

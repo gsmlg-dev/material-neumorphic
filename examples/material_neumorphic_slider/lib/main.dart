@@ -15,11 +15,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = NeumorphicTheme.defaultSeedColor;
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Slider',
@@ -53,19 +54,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 1;
-
-  double _mapValue(int idx) {
-    switch (idx) {
-      case 0:
-        return 0;
-      case 1:
-        return 0.5;
-      case 2:
-        return 1.0;
-      default:
-        return 0;
-    }
-  }
 
   double _seekValue = 3.0;
 
@@ -143,9 +131,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               Text(
                                 "${minPrice.round()} - ${maxPrice.round()}",
-                                style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
+                                style:
+                                    TextStyle(color: theme.colorScheme.primary),
                               ),
                             ],
                           ),
