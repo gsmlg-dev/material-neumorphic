@@ -14,11 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = Color.fromARGB(255, 221, 230, 232);
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Demo',
@@ -108,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Center(
             child: Neumorphic(
               child: SizedBox(
-                width: 480.0,
+                width: 320.0,
                 height: 320.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

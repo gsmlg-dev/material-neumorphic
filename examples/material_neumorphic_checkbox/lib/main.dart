@@ -58,10 +58,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // final theme = Theme.of(context);
     // final neumorphicTheme = theme.extension<NeumorphicTheme>();
     return Scaffold(
-      body: SafeArea(
-        child: NeumorphicBackground(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      body: NeumorphicBackground(
+        child: SafeArea(
           child: Center(
             child: Neumorphic(
+              margin: const EdgeInsets.all(24),
               child: SizedBox(
                 width: 480.0,
                 height: 320.0,
@@ -72,42 +75,57 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Which design do you like?',
                     ),
                     const SizedBox(height: 20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        NeumorphicCheckbox(
-                          value: _value1,
-                          onChanged: (bool value) {
-                            setState(() {
-                              _value1 = value;
-                            });
-                          },
-                        ),
-                        const SizedBox(width: 10),
-                        const Text('neumorphic'),
-                        const SizedBox(width: 20),
-                        NeumorphicCheckbox(
-                          value: _value2,
-                          onChanged: (bool value) {
-                            setState(() {
-                              _value2 = value;
-                            });
-                          },
-                        ),
-                        const SizedBox(width: 10),
-                        const Text('morphic'),
-                        const SizedBox(width: 20),
-                        NeumorphicCheckbox(
-                          value: _value3,
-                          onChanged: (bool value) {
-                            setState(() {
-                              _value3 = value;
-                            });
-                          },
-                        ),
-                        const SizedBox(width: 10),
-                        const Text('flat'),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.all(24.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            children: [
+                              NeumorphicCheckbox(
+                                value: _value1,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    _value1 = value;
+                                  });
+                                },
+                              ),
+                              const SizedBox(width: 20),
+                              const Text('neumorphic'),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            children: [
+                              NeumorphicCheckbox(
+                                value: _value2,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    _value2 = value;
+                                  });
+                                },
+                              ),
+                              const SizedBox(width: 20),
+                              const Text('morphic'),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            children: [
+                              NeumorphicCheckbox(
+                                value: _value3,
+                                onChanged: (bool value) {
+                                  setState(() {
+                                    _value3 = value;
+                                  });
+                                },
+                              ),
+                              const SizedBox(width: 20),
+                              const Text('flat'),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
