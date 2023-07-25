@@ -94,7 +94,8 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
         _intensity = intensity ?? _defaultIntensity,
         _surfaceIntensity = surfaceIntensity ?? 0.25;
 
-  double get depth => _depth.clamp(NeumorphicTheme.minDepth, Neumorphic.maxDepth);
+  double get depth =>
+      _depth.clamp(NeumorphicTheme.minDepth, Neumorphic.maxDepth);
 
   double get intensity =>
       _intensity.clamp(Neumorphic.minIntensity, Neumorphic.maxIntensity);
