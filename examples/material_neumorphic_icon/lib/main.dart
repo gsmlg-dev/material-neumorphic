@@ -12,11 +12,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = NeumorphicTheme.defaultSeedColor;
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Demo',
@@ -53,22 +55,22 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
-      body: SafeArea(
-        child: NeumorphicBackground(
+      extendBodyBehindAppBar: true,
+      extendBody: true,
+      body: NeumorphicBackground(
+        child: SafeArea(
           child: GridView.builder(
-            gridDelegate:
-                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 4, mainAxisSpacing: 24, crossAxisSpacing: 24),
             itemCount: icons.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: NeumorphicIcon(
                   icons[index],
-                  size: 80,
+                  size: 48,
                   style: NeumorphicStyle(
-                      depth: 6,
-                      shape: NeumorphicShape.convex,
-                      surfaceIntensity: 1.0),
+                      depth: 6, color: theme.colorScheme.primary),
                 ),
               );
             },
