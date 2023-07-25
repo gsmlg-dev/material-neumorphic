@@ -24,12 +24,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_neumorphic_theme:
-    path: "../../packages/material_neumorphic_theme"
-  material_neumorphic_background:
-    path: "../../packages/material_neumorphic_background"
-  material_neumorphic_text:
-    path: "../../packages/material_neumorphic_text"
+  material_neumorphic_theme: ^1.0.0
+  material_neumorphic_background: ^1.0.0
+  material_neumorphic_text: ^1.0.0
 
 dev_dependencies:
   flutter_test:

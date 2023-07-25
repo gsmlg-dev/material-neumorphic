@@ -11,21 +11,16 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
+  material_neumorphic_theme: ^1.0.0
+  material_neumorphic_background: ^1.0.0
+  material_neumorphic_button: ^1.0.0
+  material_neumorphic_app_bar: ^1.0.0
+  material_neumorphic_icon: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  material_neumorphic_theme:
-    path: "../../packages/material_neumorphic_theme"
-  material_neumorphic_background:
-    path: "../../packages/material_neumorphic_background"
-  material_neumorphic_button:
-    path: "../../packages/material_neumorphic_button"
-  material_neumorphic_app_bar:
-    path: "../../packages/material_neumorphic_app_bar"
-  material_neumorphic_icon:
-    path: "../../packages/material_neumorphic_icon"
 
 flutter:
   uses-material-design: true

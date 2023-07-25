@@ -58,7 +58,7 @@ class NeumorphicStyle {
         _surfaceIntensity = surfaceIntensity;
 
   double? get depth =>
-      _depth?.clamp(Neumorphic.minDepth, Neumorphic.maxDepth);
+      _depth?.clamp(NeumorphicTheme.minDepth, Neumorphic.maxDepth);
 
   double? get intensity =>
       _intensity?.clamp(Neumorphic.minIntensity, Neumorphic.maxIntensity);

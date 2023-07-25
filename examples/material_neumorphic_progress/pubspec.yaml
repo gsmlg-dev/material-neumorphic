@@ -12,19 +12,14 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  material_neumorphic_theme:
-    path: "../../packages/material_neumorphic_theme"
-  material_neumorphic_background:
-    path: "../../packages/material_neumorphic_background"
-  material_neumorphic_toggle:
-    path: "../../packages/material_neumorphic_toggle"
-  material_neumorphic_progress:
-    path: "../../packages/material_neumorphic_progress"
+  material_neumorphic_theme: ^1.0.0
+  material_neumorphic_background: ^1.0.0
+  material_neumorphic_toggle: ^1.0.0
+  material_neumorphic_progress: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^2.0.0
 
 flutter:

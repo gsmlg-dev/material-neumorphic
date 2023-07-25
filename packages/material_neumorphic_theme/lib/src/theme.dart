@@ -9,7 +9,7 @@ import 'shape.dart';
 
 const double _defaultDepth = 4;
 const double _defaultIntensity = 0.7;
-const Color _defaultAccent = NeumorphicColors.accent;
+const Color _defaultAccent = Color.fromARGB(255, 25, 56, 81);
 const Color _defaultVariant = NeumorphicColors.variant;
 const Color _defaultDisabledColor = NeumorphicColors.disabled;
 const Color _defaultTextColor = NeumorphicColors.defaultTextColor;
@@ -22,6 +22,18 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
   static const defaultSeedColor = Color.fromARGB(255, 221, 230, 232);
   static const defaultDepth = _defaultDepth;
   static const defaultIntensity = _defaultIntensity;
+
+  static const defaultDuration = Duration(milliseconds: 100);
+  static const defaultCurve = Curves.linear;
+
+  static const double minDepth = -20.0;
+  static const double maxDepth = 20.0;
+
+  static const double minIntensity = 0.0;
+  static const double maxIntensity = 1.0;
+
+  static const double minCurve = 0.0;
+  static const double maxCurve = 1.0;
 
   final Color baseColor;
   final Color accentColor;
@@ -82,13 +94,13 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
         _intensity = intensity ?? _defaultIntensity,
         _surfaceIntensity = surfaceIntensity ?? 0.25;
 
-  double get depth => _depth.clamp(Neumorphic.minDepth, Neumorphic.maxDepth);
+  double get depth => _depth.clamp(NeumorphicTheme.minDepth, Neumorphic.maxDepth);
 
   double get intensity =>
       _intensity.clamp(Neumorphic.minIntensity, Neumorphic.maxIntensity);
 
-  double get surfaceIntensity => _surfaceIntensity.clamp(
-      Neumorphic.minIntensity, Neumorphic.maxIntensity);
+  double get surfaceIntensity =>
+      _surfaceIntensity.clamp(Neumorphic.minIntensity, Neumorphic.maxIntensity);
 
   @override
   bool operator ==(Object other) =>
