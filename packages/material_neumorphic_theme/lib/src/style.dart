@@ -26,11 +26,11 @@ class NeumorphicStyle {
   //override the "white" color
   final Color? shadowLightColor;
 
-  //override the "dark" color
-  final Color? shadowDarkColor;
-
   //override the "white" color
   final Color? shadowLightColorEmboss;
+
+  //override the "dark" color
+  final Color? shadowDarkColor;
 
   //override the "dark" color
   final Color? shadowDarkColorEmboss;
