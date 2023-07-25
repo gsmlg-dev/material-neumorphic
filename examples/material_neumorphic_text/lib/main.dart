@@ -54,9 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final neumorphicTheme = theme.extension<NeumorphicTheme>();
-    final NeumorphicStyle style =
-        NeumorphicStyle().copyWithTheme(neumorphicTheme!).applyDisableDepth();
+    final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
+    final NeumorphicStyle style = neumorphicTheme.getNeumorphicStyle();
 
     return Scaffold(
       body: NeumorphicBackground(
@@ -73,7 +72,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: [
                       NeumorphicText('Neumorphic Design',
                           style: style.copyWith(
-                              depth: 4, color: theme.colorScheme.primary),
+                              border: NeumorphicBorder(
+                                  width: 2,
+                                  color: theme.colorScheme.onPrimaryContainer),
+                              depth: 4,
+                              color: theme.colorScheme.primary),
                           textStyle: TextStyle(fontSize: 36.0)),
                       NeumorphicText('is',
                           style: style.copyWith(
