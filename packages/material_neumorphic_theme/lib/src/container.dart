@@ -8,18 +8,6 @@ import 'style.dart';
 
 @immutable
 class Neumorphic extends StatelessWidget {
-  static const defaultDuration = Duration(milliseconds: 100);
-  static const defaultCurve = Curves.linear;
-
-  static const double minDepth = -20.0;
-  static const double maxDepth = 20.0;
-
-  static const double minIntensity = 0.0;
-  static const double maxIntensity = 1.0;
-
-  static const double minCurve = 0.0;
-  static const double maxCurve = 1.0;
-
   final Widget? child;
 
   final NeumorphicStyle? style;
@@ -33,9 +21,9 @@ class Neumorphic extends StatelessWidget {
   Neumorphic({
     Key? key,
     this.child,
-    this.duration = Neumorphic.defaultDuration,
-    this.curve = Neumorphic.defaultCurve,
     this.style,
+    this.duration = NeumorphicTheme.defaultDuration,
+    this.curve = NeumorphicTheme.defaultCurve,
     this.margin = const EdgeInsets.all(0),
     this.padding = const EdgeInsets.all(0),
     this.drawSurfaceAboveChild = true,
@@ -45,9 +33,9 @@ class Neumorphic extends StatelessWidget {
   Widget build(BuildContext context) {
     final NeumorphicTheme? neumorphicTheme =
         Theme.of(context).extension<NeumorphicTheme>();
-    final NeumorphicStyle style = (this.style ?? NeumorphicStyle())
-        .copyWithTheme(neumorphicTheme!)
-        .applyDisableDepth();
+    final NeumorphicStyle style =
+        (neumorphicTheme?.getNeumorphicStyle() ?? NeumorphicStyle())
+            .merge(this.style);
 
     return _NeumorphicContainer(
       color: style.color!,

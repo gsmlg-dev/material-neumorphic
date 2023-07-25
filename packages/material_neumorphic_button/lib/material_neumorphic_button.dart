@@ -60,8 +60,8 @@ class NeumorphicButton extends StatefulWidget {
     this.tooltip,
     this.drawSurfaceAboveChild = true,
     this.pressed, //true/false if you want to change the state of the button
-    this.duration = Neumorphic.defaultDuration,
-    this.curve = Neumorphic.defaultCurve,
+    this.duration = NeumorphicTheme.defaultDuration,
+    this.curve = NeumorphicTheme.defaultCurve,
     //this.accent,
     this.onPressed,
     this.minDistance = 0,

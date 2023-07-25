@@ -36,11 +36,11 @@ class NeumorphicBackground extends StatelessWidget {
         Theme.of(context).extension<NeumorphicTheme>();
     return Container(
       padding: margin,
-      color: theme?.color,
+      color: theme?.baseColor,
       child: ClipRRect(
         borderRadius: borderRadius ?? BorderRadius.circular(0),
         child: AnimatedContainer(
-          color: theme?.color,
+          color: theme?.baseColor,
           padding: padding,
           duration: const Duration(milliseconds: 100),
           child: child,

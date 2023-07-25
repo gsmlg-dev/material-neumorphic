@@ -1,5 +1,8 @@
 import 'dart:ui';
 
+import 'package:flutter/material.dart';
+
+@immutable
 class NeumorphicBorder {
   final bool isEnabled;
   final Color? color;
@@ -44,6 +47,14 @@ class NeumorphicBorder {
       color: Color.lerp(a!.color, b!.color, t),
       isEnabled: a.isEnabled,
       width: lerpDouble(a.width, b.width, t),
+    );
+  }
+
+  NeumorphicBorder copyWith({Color? color, double? width}) {
+    return NeumorphicBorder(
+      isEnabled: isEnabled,
+      color: color ?? this.color,
+      width: width ?? this.width,
     );
   }
 

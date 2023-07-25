@@ -123,7 +123,7 @@ class NeumorphicSwitch extends StatelessWidget {
   const NeumorphicSwitch({
     this.style = const NeumorphicSwitchStyle(),
     Key? key,
-    this.curve = Neumorphic.defaultCurve,
+    this.curve = NeumorphicTheme.defaultCurve,
     this.duration = const Duration(milliseconds: 200),
     this.value = false,
     this.onChanged,
