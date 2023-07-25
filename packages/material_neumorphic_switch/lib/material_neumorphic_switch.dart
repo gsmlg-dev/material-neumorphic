@@ -142,7 +142,6 @@ class NeumorphicSwitch extends StatelessWidget {
         aspectRatio: 2 / 1,
         child: GestureDetector(
           onTap: () {
-            // animation breaking prevention
             if (!isEnabled) {
               return;
             }
@@ -158,8 +157,8 @@ class NeumorphicSwitch extends StatelessWidget {
               border: style.trackBorder,
               disableDepth: style.disableDepth,
               depth: _getTrackDepth(neumorphicTheme.depth),
-              shape: NeumorphicShape.flat,
               color: _getTrackColor(neumorphicTheme, isEnabled),
+              shape: NeumorphicShape.flat,
             ),
             child: NeumorphicAnimatedScale(
               scale: isEnabled ? 1 : 0,
@@ -253,7 +252,6 @@ class AnimatedThumb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // This Container is actually the inner track containing the thumb
     return AnimatedAlign(
       curve: curve,
       alignment: alignment,
@@ -275,7 +273,6 @@ class AnimatedThumb extends StatelessWidget {
             child: FractionallySizedBox(
               heightFactor: 1,
               child: Container(),
-              //width: THUMB_WIDTH,
             ),
           ),
         ),

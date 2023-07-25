@@ -12,11 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color seedColor = Color.fromARGB(255, 232, 186, 47);
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Demo',
@@ -53,24 +54,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // final theme = Theme.of(context);
+    final theme = Theme.of(context);
     // final neumorphicTheme = theme.extension<NeumorphicTheme>();
 
     return Scaffold(
-      body: SafeArea(
-        child: NeumorphicBackground(
+      body: NeumorphicBackground(
+        child: SafeArea(
           child: Center(
             child: Neumorphic(
+              margin: const EdgeInsets.all(24),
               child: SizedBox(
                 width: 480.0,
                 height: 320.0,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text(
+                    Text(
                       'Do you like neumorphic design?',
+                      style: theme.textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 24),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -84,7 +87,15 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                         ),
                         const SizedBox(width: 10),
-                        _switch1Value ? const Text('Yes') : const Text('No'),
+                        _switch1Value
+                            ? Text(
+                                'Yes',
+                                style: theme.textTheme.bodyLarge,
+                              )
+                            : Text(
+                                'No',
+                                style: theme.textTheme.bodyLarge,
+                              ),
                       ],
                     ),
                   ],
