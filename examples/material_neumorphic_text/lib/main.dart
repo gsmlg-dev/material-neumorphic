@@ -13,11 +13,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = Color.fromARGB(255, 232, 186, 47);
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Demo',
@@ -58,10 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
         NeumorphicStyle().copyWithTheme(neumorphicTheme!).applyDisableDepth();
 
     return Scaffold(
-      body: SafeArea(
-        child: NeumorphicBackground(
+      body: NeumorphicBackground(
+        child: SafeArea(
           child: Center(
             child: Neumorphic(
+              margin: const EdgeInsets.all(24),
               child: SizedBox(
                 width: 480.0,
                 height: 400.0,
@@ -72,25 +74,25 @@ class _MyHomePageState extends State<MyHomePage> {
                       NeumorphicText('Neumorphic Design',
                           style: style.copyWith(
                               depth: 4, color: theme.colorScheme.primary),
-                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                          textStyle: TextStyle(fontSize: 36.0)),
                       NeumorphicText('is',
                           style: style.copyWith(
-                              depth: 2, color: theme.colorScheme.onPrimary),
-                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                              depth: 2, color: theme.colorScheme.tertiary),
+                          textStyle: TextStyle(fontSize: 36.0)),
                       NeumorphicText('Simple',
                           style: style.copyWith(
                               depth: 6,
                               color: theme.colorScheme.onPrimaryContainer),
-                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                          textStyle: TextStyle(fontSize: 36.0)),
                       NeumorphicText('and',
                           style: style.copyWith(
-                              depth: 2, color: theme.colorScheme.onSecondary),
-                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                              depth: 2, color: theme.colorScheme.tertiary),
+                          textStyle: TextStyle(fontSize: 36.0)),
                       NeumorphicText('Beautiful',
                           style: style.copyWith(
                               depth: 6,
                               color: theme.colorScheme.onSecondaryContainer),
-                          textStyle: NeumorphicTextStyle(fontSize: 36.0)),
+                          textStyle: TextStyle(fontSize: 36.0)),
                     ],
                   ),
                 ),

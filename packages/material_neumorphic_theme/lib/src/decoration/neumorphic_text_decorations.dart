@@ -27,7 +27,6 @@ class NeumorphicTextDecoration extends Decoration {
 
   @override
   BoxPainter createBoxPainter([VoidCallback? onChanged]) {
-    //print("createBoxPainter : ${style.depth}");
     if (style.depth != null && style.depth! >= 0) {
       return NeumorphicDecorationTextPainter(
         style: style,
@@ -35,9 +34,7 @@ class NeumorphicTextDecoration extends Decoration {
         textAlign: textAlign,
         drawGradient: true,
         drawBackground: !isForeground,
-        //only box draw background
         drawShadow: !isForeground,
-        //only box draw shadow
         renderingByPath: renderingByPath,
         onChanged: onChanged ?? () {},
         text: text,
@@ -45,17 +42,6 @@ class NeumorphicTextDecoration extends Decoration {
     } else {
       return NeumorphicEmptyTextPainter(onChanged: onChanged ?? () {});
     }
-    /* else {
-      return NeumorphicEmbossDecorationPainter(
-        drawBackground: !isForeground,
-        style: style,
-        drawShadow: (isForeground && splitBackgroundForeground) ||
-            (!isForeground && !splitBackgroundForeground),
-        onChanged: onChanged,
-        shape: shape,
-      );
-    }
-    */
   }
 
   @override

@@ -1,145 +1,12 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
-
-class NeumorphicTextStyle {
-  final bool inherit;
-  final double? fontSize;
-  final FontWeight? fontWeight;
-  final FontStyle? fontStyle;
-  final double? letterSpacing;
-  final double? wordSpacing;
-  final TextBaseline? textBaseline;
-  final double? height;
-  final Locale? locale;
-  final List<FontFeature>? fontFeatures;
-  final TextDecoration? decoration;
-  final String? debugLabel;
-  final String? fontFamily;
-  final List<String>? fontFamilyFallback;
-  final String? package;
-  //final Color color;
-  //final Color backgroundColor;
-  //final Paint foreground,
-  //final Paint background,
-  //final TextDecoration decoration,
-  //final Color decorationColor;
-  //final TextDecorationStyle decorationStyle;
-  //final double decorationThickness;
-
-  TextStyle get textStyle => TextStyle(
-        inherit: inherit,
-        fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontStyle: fontStyle,
-        letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing,
-        textBaseline: textBaseline,
-        height: height,
-        locale: locale,
-        fontFeatures: fontFeatures,
-        decoration: decoration,
-        debugLabel: debugLabel,
-        fontFamily: fontFamily,
-        fontFamilyFallback: fontFamilyFallback,
-        package: package,
-        //color: color,
-        //backgroundColor: backgroundColor,
-        //foreground: foreground,
-        //background: background,
-        //decoration: decoration,
-        //decorationColor: decorationColor,
-        //decorationStyle: decorationStyle,
-        //decorationThickness: decorationThickness,
-      );
-
-  /// Creates a text style.
-  ///
-  /// The `package` argument must be non-null if the font family is defined in a
-  /// package. It is combined with the `fontFamily` argument to set the
-  /// [fontFamily] property.
-  NeumorphicTextStyle({
-    this.inherit = true,
-    this.fontSize,
-    this.fontWeight,
-    this.fontStyle,
-    this.letterSpacing,
-    this.wordSpacing,
-    this.textBaseline,
-    this.height,
-    this.locale,
-    this.fontFeatures,
-    this.decoration,
-    this.debugLabel,
-    this.fontFamily,
-    //this.color,
-    //this.backgroundColor,
-    //this.foreground,
-    //this.background,
-    //this.decoration,
-    //this.decorationColor,
-    //this.decorationStyle,
-    //this.decorationThickness,
-    this.fontFamilyFallback,
-    this.package,
-  });
-
-  NeumorphicTextStyle copyWith({
-    bool? inherit,
-    String? fontFamily,
-    List<String>? fontFamilyFallback,
-    double? fontSize,
-    FontWeight? fontWeight,
-    FontStyle? fontStyle,
-    double? letterSpacing,
-    double? wordSpacing,
-    TextBaseline? textBaseline,
-    double? height,
-    Locale? locale,
-    List<FontFeature>? fontFeatures,
-    String? debugLabel,
-    //Color color,
-    //Color backgroundColor,
-    //Paint foreground,
-    //Paint background,
-    //TextDecoration decoration,
-    //Color decorationColor,
-    //TextDecorationStyle decorationStyle,
-    //double decorationThickness,
-  }) {
-    return NeumorphicTextStyle(
-      inherit: inherit ?? this.inherit,
-      fontFamily: fontFamily ?? this.fontFamily,
-      fontFamilyFallback: fontFamilyFallback ?? this.fontFamilyFallback,
-      fontSize: fontSize ?? this.fontSize,
-      fontWeight: fontWeight ?? this.fontWeight,
-      fontStyle: fontStyle ?? this.fontStyle,
-      letterSpacing: letterSpacing ?? this.letterSpacing,
-      wordSpacing: wordSpacing ?? this.wordSpacing,
-      textBaseline: textBaseline ?? this.textBaseline,
-      height: height ?? this.height,
-      locale: locale ?? this.locale,
-      fontFeatures: fontFeatures ?? this.fontFeatures,
-      debugLabel: debugLabel ?? this.debugLabel,
-      //color: this.foreground == null && foreground == null ? color ?? this.color : null,
-      //backgroundColor: this.background == null && background == null ? backgroundColor ?? this.backgroundColor : null,
-      //foreground: foreground ?? this.foreground,
-      //background: background ?? this.background,
-      //shadows: shadows ?? this.shadows,
-      //decoration: decoration ?? this.decoration,
-      //decorationColor: decorationColor ?? this.decorationColor,
-      //decorationStyle: decorationStyle ?? this.decorationStyle,
-      //decorationThickness: decorationThickness ?? this.decorationThickness,
-    );
-  }
-}
 
 @immutable
 class NeumorphicText extends StatelessWidget {
   final String text;
   final NeumorphicStyle? style;
-  final TextAlign textAlign;
-  final NeumorphicTextStyle? textStyle;
+  final TextAlign? textAlign;
+  final TextStyle? textStyle;
   final Curve curve;
   final Duration duration;
 
@@ -149,20 +16,24 @@ class NeumorphicText extends StatelessWidget {
     this.duration = NeumorphicTheme.defaultDuration,
     this.curve = NeumorphicTheme.defaultCurve,
     this.style,
-    this.textAlign = TextAlign.center,
+    this.textAlign,
     this.textStyle,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context).extension<NeumorphicTheme>();
-    final NeumorphicStyle style = (this.style ?? NeumorphicStyle())
-        .copyWithTheme(theme!)
+    final theme = Theme.of(context);
+    final neumorphicTheme = theme.extension<NeumorphicTheme>();
+    final NeumorphicStyle style = neumorphicTheme!
+        .getNeumorphicStyle()
+        .merge(this.style)
         .applyDisableDepth();
 
     return _NeumorphicText(
-      textStyle: (textStyle ?? NeumorphicTextStyle()).textStyle,
-      textAlign: textAlign,
+      textStyle: textStyle ?? DefaultTextStyle.of(context).style,
+      textAlign: textAlign ??
+          DefaultTextStyle.of(context).textAlign ??
+          TextAlign.center,
       text: text,
       duration: duration,
       style: style,
@@ -198,8 +69,9 @@ class _NeumorphicText extends StatefulWidget {
 class __NeumorphicTextState extends State<_NeumorphicText> {
   @override
   Widget build(BuildContext context) {
-    final TextPainter textPainter = TextPainter(
-        textDirection: TextDirection.ltr, textAlign: widget.textAlign);
+    final textDirection = Directionality.of(context);
+    final TextPainter textPainter =
+        TextPainter(textDirection: textDirection, textAlign: widget.textAlign);
     final textStyle = widget.textStyle;
     textPainter.text = TextSpan(
       text: widget.text,
