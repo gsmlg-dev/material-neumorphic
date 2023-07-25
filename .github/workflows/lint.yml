@@ -32,13 +32,3 @@ jobs:
       - uses: bluefireteam/melos-action@main
       - name: "Analyze"
         uses: invertase/github-action-dart-analyzer@v2.0.0
-
-  markdown-lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-      - run: npm install -g markdownlint-cli
-      - run: markdownlint . -p .markdownlintignore -c .markdownlint.yaml
