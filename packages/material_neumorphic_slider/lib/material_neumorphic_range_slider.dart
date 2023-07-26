@@ -155,8 +155,8 @@ class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
   }
 
   _panUpdateLow(DragUpdateDetails details, BoxConstraints constraints) {
-    final tapPos = details.localPosition;
-    final newPercent = tapPos.dx / constraints.maxWidth;
+    final tapPos = details.delta;
+    final newPercent = widget.percentLow + tapPos.dx / constraints.maxWidth;
     final newValue = ((widget.min + (widget.max - widget.min) * newPercent))
         .clamp(widget.min, widget.max);
 
@@ -164,12 +164,16 @@ class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
       if (widget.onChangedLow != null) {
         widget.onChangedLow!(newValue);
       }
+    } else if (newValue >= widget.valueHigh) {
+      if (widget.onChangeHigh != null) {
+        widget.onChangeHigh!(newValue);
+      }
     }
   }
 
   _panUpdateHigh(DragUpdateDetails details, BoxConstraints constraints) {
-    final tapPos = details.localPosition;
-    final newPercent = tapPos.dx / constraints.maxWidth;
+    final tapPos = details.delta;
+    final newPercent = widget.percentHigh + tapPos.dx / constraints.maxWidth;
     final newValue = ((widget.min + (widget.max - widget.min) * newPercent))
         .clamp(widget.min, widget.max);
 
@@ -177,13 +181,15 @@ class _NeumorphicRangeSliderState extends State<NeumorphicRangeSlider> {
       if (widget.onChangeHigh != null) {
         widget.onChangeHigh!(newValue);
       }
+    } else if (newValue <= widget.valueLow) {
+      if (widget.onChangedLow != null) {
+        widget.onChangedLow!(newValue);
+      }
     }
   }
 
   Widget _widget(BuildContext context, BoxConstraints constraints) {
     double thumbSize = widget.height * 1.5;
-    print(
-        "low: ${widget.valueLow}, high: ${widget.valueHigh}, min: ${widget.min}, max: ${widget.max}");
 
     return Stack(
       alignment: Alignment.center,
