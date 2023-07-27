@@ -1,15 +1,17 @@
 name: material_neumorphic
 description: |
-  A Flutter package for creating Neumorphic theme.
+  A Flutter package for creating Neumorphic theme widgets.
   This package includes all neumorphic widgets.
+  This package can fit with material colorScheme.
 version: 1.0.0
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:
   sdk: ^3.0.0
 
-# Add regular dependencies here.
 dependencies:
+  flutter:
+    sdk: flutter
   material_neumorphic_app_bar: ^1.0.0
   material_neumorphic_background: ^1.0.0
   material_neumorphic_button: ^1.0.0
