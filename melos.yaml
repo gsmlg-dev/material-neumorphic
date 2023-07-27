@@ -1,17 +1,32 @@
 name: material-neumorphic
+repository: https://github.com/gsmlg-dev/material-neumorphic
 
 packages:
-  - packages/**
+  - packages/*
+  - examples/*
 
 command:
-  bootstrap:
-    usePubspecOverrides: true
+  version:
+    # Only allow versioning to happen on main branch.
+    branch: main
+    # Generates a link to a prefilled GitHub release creation page.
+    releaseUrl: true
 
 scripts:
-  analyze:
-    exec: flutter analyze .
-  outdated:
-    exec: flutter pub outdated
-  test:
-    exec: flutter test
+  lint:all:
+    run: melos run analyze && melos run format
+    description: Run all static analysis checks.
 
+  analyze:
+    run: |
+      melos exec -c 10 -- \
+        flutter analyze --fatal-infos
+    description: Run `flutter analyze` for all packages.
+
+  format:
+    run: melos exec dart format . --fix
+    description: Run `dart format` for all packages.
+
+  format-check:
+    run: melos exec dart format . --set-exit-if-changed
+    description: Run `dart format` checks for all packages.

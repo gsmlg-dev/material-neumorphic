@@ -1,0 +1,19 @@
+name: material_neumorphic_indicator
+description: |
+  A Flutter package for creating Neumorphic indicator.
+version: 1.0.0
+repository: https://github.com/gsmlg-dev/material-neumorphic.git
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  material_neumorphic_theme: ^1.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  lints: ^2.0.0
+  test: ^1.21.0

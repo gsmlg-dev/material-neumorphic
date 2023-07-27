@@ -1,15 +1,19 @@
 name: material_neumorphic_theme
-description: A sample command-line application.
+description: |
+  A Flutter package for creating Neumorphic theme.
+  Use material colorscheme to set neumorphic theme colors.
 version: 1.0.0
-# repository: https://github.com/my_org/my_repo
+repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:
-  sdk: ^3.0.6
+  sdk: ^3.0.0
 
-# Add regular dependencies here.
 dependencies:
-  # path: ^1.8.0
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
+  flutter_test:
+    sdk: flutter
   lints: ^2.0.0
   test: ^1.21.0
