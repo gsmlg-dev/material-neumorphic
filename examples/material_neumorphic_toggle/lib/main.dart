@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
-import 'package:material_neumorphic_button/material_neumorphic_button.dart';
 import 'package:material_neumorphic_background/material_neumorphic_background.dart';
 import 'package:material_neumorphic_app_bar/material_neumorphic_app_bar.dart';
 import 'package:material_neumorphic_toggle/material_neumorphic_toggle.dart';
@@ -15,11 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = NeumorphicTheme.defaultSeedColor;
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Demo',

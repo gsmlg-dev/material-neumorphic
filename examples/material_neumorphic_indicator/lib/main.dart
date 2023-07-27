@@ -14,11 +14,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    final Color seedColor = NeumorphicTheme.defaultSeedColor;
     final colorScheme = ColorScheme.fromSeed(
-        brightness: Brightness.light, seedColor: seedColor);
-    final darkColorScheme =
-        ColorScheme.fromSeed(brightness: Brightness.dark, seedColor: seedColor);
+        brightness: Brightness.light,
+        seedColor: NeumorphicTheme.defaultSeedColor);
+    final darkColorScheme = ColorScheme.fromSeed(
+        brightness: Brightness.dark,
+        seedColor: NeumorphicTheme.defaultSeedColor);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Neumorphic Indicator',
@@ -52,22 +53,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-
-  _mapName(int idx) {
-    switch (idx) {
-      case 0:
-        // 18/77 15 19 12 9 7
-        return 'Berserker';
-      case 1:
-        // 13 20 15 17 17 14
-        return 'Ranger';
-      case 2:
-        // 22 20 22 15 15 13
-        return 'Monk';
-      default:
-        return 'Unknown';
-    }
-  }
 
   mapAttr(int idx, int attr) {
     switch (idx) {
