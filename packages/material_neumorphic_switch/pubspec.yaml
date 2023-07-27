@@ -1,5 +1,6 @@
 name: material_neumorphic_switch
-description: A sample command-line application.
+description: |
+  A Flutter package for creating Neumorphic switch.
 version: 1.0.0
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
