@@ -66,7 +66,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: SafeArea(
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: gridColumns, mainAxisSpacing: 24, crossAxisSpacing: 24),
+                crossAxisCount: gridColumns,
+                mainAxisSpacing: 24,
+                crossAxisSpacing: 24),
             itemCount: icons.length,
             itemBuilder: (context, index) {
               return Padding(
