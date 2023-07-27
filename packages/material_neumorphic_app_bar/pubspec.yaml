@@ -1,7 +1,7 @@
 name: material_neumorphic_app_bar
 description: |
   A Flutter package for creating Neumorphic AppBar.
-version: 1.0.0
+version: 1.1.0
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:
@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_neumorphic_theme: ^1.0.0
-  material_neumorphic_button: ^1.0.0
+  material_neumorphic_theme: ^1.1.0
+  material_neumorphic_button: ^1.1.0
 
 dev_dependencies:
   flutter_test:
