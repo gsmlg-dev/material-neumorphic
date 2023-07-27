@@ -159,6 +159,10 @@ class _MyHomePageState extends State<MyHomePage> {
                           },
                         ),
                       ),
+                      const SizedBox(height: 20),
+                      const NeumorphicProgressIndeterminate(
+                        height: 15,
+                      ),
                     ],
                   ),
                 ),
