@@ -54,14 +54,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final size = MediaQuery.of(context).size;
+    print('size: $size');
+
+    final int gridColumns = (size.width / (48 + 18 * 3)).floor();
+
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
       body: NeumorphicBackground(
         child: SafeArea(
           child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, mainAxisSpacing: 24, crossAxisSpacing: 24),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: gridColumns, mainAxisSpacing: 24, crossAxisSpacing: 24),
             itemCount: icons.length,
             itemBuilder: (context, index) {
               return Padding(
