@@ -8,12 +8,13 @@ import 'style.dart';
 
 const double _defaultBorderSize = 0.3;
 const NeumorphicShape _defaultShape = NeumorphicShape.flat;
+const Color _defaultSeedColor = Color.fromARGB(255, 221, 230, 232);
+final _defaultColorScheme = ColorScheme.fromSeed(seedColor: _defaultSeedColor);
 
 @immutable
 class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
-  static const defaultSeedColor = Color.fromARGB(255, 221, 230, 232);
-  static final defaultColorScheme =
-      ColorScheme.fromSeed(seedColor: defaultSeedColor);
+  static const defaultSeedColor = _defaultSeedColor;
+  static final defaultColorScheme = _defaultColorScheme;
 
   static const double defaultDepth = 4;
   static const double defaultIntensity = 0.7;
@@ -108,9 +109,9 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
           shadowLightColor == other.shadowLightColor &&
           shadowDarkColorEmboss == other.shadowDarkColorEmboss &&
           shadowLightColorEmboss == other.shadowLightColorEmboss &&
-          _depth == other._depth &&
-          _intensity == other._intensity &&
-          _surfaceIntensity == other._surfaceIntensity &&
+          depth == other.depth &&
+          intensity == other.intensity &&
+          surfaceIntensity == other.surfaceIntensity &&
           lightSource == other.lightSource &&
           oppositeShadowLightSource == other.oppositeShadowLightSource &&
           shape == other.shape;
