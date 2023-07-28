@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_neumorphic/material_neumorphic.dart';
 import 'package:material_neumorphic_example/state/theme.dart';
+import 'app_config.dart';
 
 class LocalAppBar extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
@@ -22,6 +23,7 @@ class LocalAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final style = neumorphicTheme.getNeumorphicStyle();
 
     return NeumorphicAppBar(
+      depth: 4,
       centerTitle: true,
       title: NeumorphicText(title),
       leading: Builder(
@@ -43,7 +45,7 @@ class LocalAppBar extends ConsumerWidget implements PreferredSizeWidget {
         NeumorphicButton(
             style: style.copyWith(color: theme.colorScheme.primary, depth: -4),
             onPressed: () {
-              // Navigator.of(context).pop();
+              showDialog(context: context, builder: appConfigDialog);
             },
             child: const Icon(Icons.settings))
       ],

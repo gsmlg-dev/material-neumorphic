@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:material_neumorphic/material_neumorphic.dart';
 
 import 'shared_prefs.dart';
+
+part 'theme.g.dart';
 
 extension ThemeModeExtension on ThemeMode {
   String get title {
@@ -64,5 +67,80 @@ class ThemeModeNotifier extends StateNotifier<ThemeMode> {
       state = ThemeMode.system;
     }
     pref?.setString('themeMode', state.toString());
+  }
+}
+
+@immutable
+class AppThemeData {
+  final ThemeData lightThemeData;
+  final ThemeData darkThemeData;
+  final Color seedColor;
+
+  const AppThemeData({
+    required this.seedColor,
+    required this.lightThemeData,
+    required this.darkThemeData,
+  });
+
+  AppThemeData.fromSeed(Color color)
+      : this(
+          seedColor: color,
+          lightThemeData: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: color, brightness: Brightness.light),
+            useMaterial3: true,
+            extensions: <ThemeExtension<dynamic>>[
+              const NeumorphicTheme().fitWithColorSchema(ColorScheme.fromSeed(
+                  seedColor: color, brightness: Brightness.light)),
+            ],
+          ),
+          darkThemeData: ThemeData(
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: color, brightness: Brightness.dark),
+            useMaterial3: true,
+            extensions: <ThemeExtension<dynamic>>[
+              const NeumorphicTheme().fitWithColorSchema(ColorScheme.fromSeed(
+                  seedColor: color, brightness: Brightness.dark)),
+            ],
+          ),
+        );
+}
+
+@riverpod
+Color appSeedColor(AppSeedColorRef ref) {
+  final Color seedColor = ref.read(sharedPrefsProvider).maybeWhen<Color>(
+        data: (SharedPreferences pref) {
+          final int? colorValue = pref.getInt('seedColor');
+          if (colorValue != null) {
+            return Color(colorValue);
+          }
+          return NeumorphicTheme.defaultSeedColor;
+        },
+        orElse: () => NeumorphicTheme.defaultSeedColor,
+      );
+  return seedColor;
+}
+
+@riverpod
+class LocalAppThemeData extends _$LocalAppThemeData {
+  @override
+  AppThemeData build() {
+    final seedColor = ref.read(appSeedColorProvider);
+    return AppThemeData.fromSeed(seedColor);
+  }
+
+  updateSeedColor(Color color) async {
+    state = AppThemeData.fromSeed(color);
+    final SharedPreferences pref = await ref.read(sharedPrefsProvider.future);
+    final int? colorValue = pref.getInt('seedColor');
+    Color seedColor;
+    if (colorValue != null) {
+      seedColor = Color(colorValue);
+    } else {
+      seedColor = NeumorphicTheme.defaultSeedColor;
+    }
+    if (seedColor != color) {
+      pref.setInt('seedColor', color.value);
+    }
   }
 }

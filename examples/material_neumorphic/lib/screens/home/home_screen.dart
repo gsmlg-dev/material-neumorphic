@@ -13,6 +13,9 @@ class HomeScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
 
+    final size = MediaQuery.of(context).size;
+    final width = size.width > size.height ? size.height : size.width;
+
     return Scaffold(
       drawer: const LocalDrawer(),
       appBar: const LocalAppBar(),
@@ -24,8 +27,8 @@ class HomeScreen extends ConsumerWidget {
                     .getNeumorphicStyle()
                     .copyWith(boxShape: const NeumorphicBoxShape.circle()),
                 child: SizedBox(
-                    width: 440,
-                    height: 440,
+                    width: width * 0.8,
+                    height: width * 0.8,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -33,18 +36,19 @@ class HomeScreen extends ConsumerWidget {
                           style: neumorphicTheme.getNeumorphicStyle().copyWith(
                               boxShape: NeumorphicBoxShape.path(
                                   NeumorphicFlutterLogoPathProvider())),
-                          child: const SizedBox(
-                            width: 200,
-                            height: 200,
+                          child: SizedBox(
+                            width: width * 0.4,
+                            height: width * 0.4,
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                        SizedBox(
+                          height: width * 0.04,
                         ),
                         NeumorphicText('Neumorphic UI kit example',
                             style: NeumorphicStyle(
                                 color: theme.colorScheme.onSecondaryContainer),
-                            textStyle: theme.textTheme.titleLarge),
+                            textStyle: theme.textTheme.titleLarge!
+                                .copyWith(fontSize: width * 0.04)),
                       ],
                     ))),
           ),

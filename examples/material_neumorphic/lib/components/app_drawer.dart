@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_neumorphic/material_neumorphic.dart';
+import 'package:material_neumorphic_example/router/router.dart';
+import 'package:material_neumorphic_example/screens/form/form_screen.dart';
+import 'package:material_neumorphic_example/screens/home/home_screen.dart';
+import 'package:material_neumorphic_example/screens/splash/splash_screen.dart';
 
 class LocalDrawer extends ConsumerWidget implements PreferredSizeWidget {
   final String title;
@@ -16,46 +20,39 @@ class LocalDrawer extends ConsumerWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
+    // final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
+
+    final router = ref.read(routerProvider);
 
     return Drawer(
-      // Add a ListView to the drawer. This ensures the user can scroll
-      // through the options in the drawer if there isn't enough vertical
-      // space to fit everything.
       child: ListView(
-        // Important: Remove any padding from the ListView.
         padding: EdgeInsets.zero,
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
               color: theme.colorScheme.primary,
             ),
-            child: Center(child: NeumorphicText('Drawer Header')),
+            child: Center(
+                child: NeumorphicButton(
+              child: const Text('Neumporphic'),
+              onPressed: () {
+                router.go(SplashScreen.path);
+              },
+            )),
           ),
           ListTile(
             title: const Text('Home'),
             selected: false,
             onTap: () {
-              // Update the state of the app
-              // Then close the drawer
+              router.go(HomeScreen.path);
               Navigator.pop(context);
             },
           ),
           ListTile(
-            title: const Text('Business'),
+            title: const Text('Form'),
             selected: false,
             onTap: () {
-              // Update the state of the app
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            title: const Text('School'),
-            selected: false,
-            onTap: () {
-              // Update the state of the app
-              // Then close the drawer
+              router.go(FormScreen.path);
               Navigator.pop(context);
             },
           ),

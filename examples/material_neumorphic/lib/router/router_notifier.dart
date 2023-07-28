@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:material_neumorphic_example/screens/form/form_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'package:material_neumorphic_example/screens/splash/splash_screen.dart';
@@ -27,31 +30,23 @@ class RouterNotifier extends _$RouterNotifier implements Listenable {
   String? redirect(BuildContext context, GoRouterState state) {
     if (this.state.isLoading || this.state.hasError) return null;
 
-    final isSplash = state.path == SplashScreen.path;
-    debugPrint('isSplash: $isSplash');
-    if (isSplash) {
-      return HomeScreen.path;
-    }
     return null;
   }
 
   List<GoRoute> get routes => [
         GoRoute(
           path: SplashScreen.path,
+          name: SplashScreen.path,
           pageBuilder: (context, state) {
             return MaterialPage<void>(
               key: state.pageKey,
               child: const SplashScreen(),
             );
           },
-          redirect: (context, state) async {
-            await Future.delayed(const Duration(seconds: 2));
-
-            return HomeScreen.path;
-          },
         ),
         GoRoute(
             path: HomeScreen.path,
+            name: HomeScreen.path,
             pageBuilder: (context, state) {
               return NoTransitionPage<void>(
                 key: state.pageKey,
@@ -59,23 +54,23 @@ class RouterNotifier extends _$RouterNotifier implements Listenable {
               );
             },
             routes: const []),
+        GoRoute(
+            path: FormScreen.path,
+            name: FormScreen.path,
+            pageBuilder: (context, state) {
+              return NoTransitionPage<void>(
+                key: state.pageKey,
+                child: const FormScreen(),
+              );
+            },
+            routes: const []),
       ];
 
-  /// Adds [GoRouter]'s listener as specified by its [Listenable].
-  /// [GoRouteInformationProvider] uses this method on creation to handle its
-  /// internal [ChangeNotifier].
-  /// Check out the internal implementation of [GoRouter] and
-  /// [GoRouteInformationProvider] to see this in action.
   @override
   void addListener(VoidCallback listener) {
     routerListener = listener;
   }
 
-  /// Removes [GoRouter]'s listener as specified by its [Listenable].
-  /// [GoRouteInformationProvider] uses this method when disposing,
-  /// so that it removes its callback when destroyed.
-  /// Check out the internal implementation of [GoRouter] and
-  /// [GoRouteInformationProvider] to see this in action.
   @override
   void removeListener(VoidCallback listener) {
     routerListener = null;
