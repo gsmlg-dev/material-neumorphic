@@ -38,6 +38,7 @@ class NeumorphicIcon extends StatelessWidget {
         fontFamily: icon.fontFamily,
         package: icon.fontPackage,
       ),
+      textAlign: TextAlign.center,
       duration: duration,
       style: style,
       curve: curve,
