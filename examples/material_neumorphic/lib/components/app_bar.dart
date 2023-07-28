@@ -19,20 +19,29 @@ class LocalAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final theme = Theme.of(context);
     final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
     final themeMode = ref.watch(themeModeProvider);
+    final style = neumorphicTheme.getNeumorphicStyle();
 
     return NeumorphicAppBar(
       centerTitle: true,
       title: NeumorphicText(title),
+      leading: Builder(
+        builder: (context) => // Ensure Scaffold is in context
+            NeumorphicButton(
+                style:
+                    style.copyWith(color: theme.colorScheme.primary, depth: -4),
+                child: const Icon(Icons.menu),
+                onPressed: () => Scaffold.of(context).openDrawer()),
+      ),
       actionSpacing: 16,
       actions: [
         NeumorphicButton(
-            style: NeumorphicStyle(color: theme.colorScheme.primary),
+            style: style.copyWith(color: theme.colorScheme.primary, depth: -4),
             onPressed: () {
               ref.read(themeModeProvider.notifier).toggle();
             },
             child: Center(child: themeMode.icon)),
         NeumorphicButton(
-            style: NeumorphicStyle(color: theme.colorScheme.primary),
+            style: style.copyWith(color: theme.colorScheme.primary, depth: -4),
             onPressed: () {
               // Navigator.of(context).pop();
             },

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_neumorphic/material_neumorphic.dart';
 import 'package:material_neumorphic_example/components/app_bar.dart';
+import 'package:material_neumorphic_example/components/app_drawer.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,7 @@ class HomeScreen extends ConsumerWidget {
     final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
 
     return Scaffold(
+      drawer: const LocalDrawer(),
       appBar: const LocalAppBar(),
       body: NeumorphicBackground(
         child: SafeArea(
