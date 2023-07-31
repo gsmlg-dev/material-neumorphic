@@ -1,0 +1,41 @@
+name: Deploy to gh-pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: 🛤 Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'zulu'
+        java-version: '11'
+
+    - name: 🚀 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.10.5'
+        channel: 'stable'
+        cache: true
+
+    - uses: bluefireteam/melos-action@main
+
+    - name: 🕸 Build Web
+      run: |
+        cd examples/material_neumorphic
+        flutter build web --base-href /material-neumorphic/
+
+    - name: Deploy 🚀 to gh-page-static
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        branch: gh-pages # The branch the action should deploy to.
+        folder: "examples/material_neumorphic/build/web" # The folder the action should deploy.
+        clean: true # Automatically remove deleted files from the deploy branch
+        token: ${{ secrets.ACCESS_TOKEN }}
