@@ -37,7 +37,7 @@ class Database {
 
       final currentVersion = await db.getDataVersion();
 
-      switch(currentVersion) {
+      switch (currentVersion) {
         case 1:
           // current version, we do not need to migrate
           return;
@@ -50,8 +50,7 @@ class Database {
 
       // Update version
       // await prefs.setInt(saveKey, db.version);
-
-    } catch(e) {
+    } catch (e) {
       rethrow;
     }
   }
@@ -75,4 +74,3 @@ class Database {
   //   }
   // }
 }
-

@@ -3,10 +3,10 @@ import 'package:isar/isar.dart';
 part 'app_activities.g.dart';
 
 enum ActiveState {
-    active,
-    deactive,
-    pause,
-    resume,
+  active,
+  deactive,
+  pause,
+  resume,
 }
 
 @collection
@@ -18,4 +18,3 @@ class AppActivities {
 
   DateTime createdAt = DateTime.now();
 }
-

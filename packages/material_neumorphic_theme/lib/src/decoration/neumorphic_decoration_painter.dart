@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
 import '../box_shape.dart';
 import '../shape.dart';
 import '../style.dart';
+import '../theme.dart';
 import 'cache/neumorphic_painter_cache.dart';
 import 'neumorphic_box_decoration_helper.dart';
 
