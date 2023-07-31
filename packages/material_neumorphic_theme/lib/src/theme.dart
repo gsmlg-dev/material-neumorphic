@@ -18,6 +18,7 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
 
   static const double defaultDepth = 4;
   static const double defaultIntensity = 0.7;
+  static const double defaultSurfaceIntensity = 0.25;
 
   static const defaultDuration = Duration(milliseconds: 100);
   static const defaultCurve = Curves.linear;
@@ -46,8 +47,8 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
 
   final NeumorphicShape shape;
   final NeumorphicBoxShape boxShape;
-  final Color borderColor;
-  final double borderWidth;
+  final Color _borderColor;
+  final double _borderWidth;
 
   final Color shadowLightColor;
   final Color shadowLightColorEmboss;
@@ -64,8 +65,8 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     this.shadowDarkColor = const Color.fromARGB(136, 5, 102, 1),
     this.shadowDarkColorEmboss = const Color.fromARGB(115, 21, 63, 26),
     this.oppositeShadowLightSource = false,
-    this.borderColor = const Color.fromARGB(51, 203, 110, 110),
-    this.borderWidth = _defaultBorderSize,
+    Color? borderColor,
+    double? borderWidth,
     Color? baseColor,
     Color? accentColor,
     Color? variantColor,
@@ -75,7 +76,9 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     double? surfaceIntensity,
   })  : _depth = depth ?? NeumorphicTheme.defaultDepth,
         _intensity = intensity ?? NeumorphicTheme.defaultIntensity,
-        _surfaceIntensity = surfaceIntensity ?? 0.25,
+        _surfaceIntensity = surfaceIntensity ?? defaultSurfaceIntensity,
+        _borderColor = borderColor ?? const Color.fromARGB(51, 203, 110, 110),
+        _borderWidth = borderWidth ?? _defaultBorderSize,
         _baseColor = baseColor,
         _accentColor = accentColor,
         _variantColor = variantColor,
@@ -98,6 +101,11 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
       _variantColor ?? NeumorphicTheme.defaultColorScheme.primaryContainer;
   Color get disabledColor =>
       _disabledColor ?? NeumorphicTheme.defaultColorScheme.surfaceVariant;
+
+  NeumorphicBorder get border => NeumorphicBorder(
+        color: _borderColor,
+        width: _borderWidth,
+      );
 
   @override
   bool operator ==(Object other) =>
@@ -134,8 +142,12 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
   NeumorphicTheme copyWith({
     Color? baseColor,
     Color? accentColor,
+    Color? variantColor,
+    Color? disabledColor,
     NeumorphicShape? shape,
     NeumorphicBoxShape? boxShape,
+    Color? borderColor,
+    double? borderWidth,
     Color? shadowLightColor,
     Color? shadowDarkColor,
     Color? shadowLightColorEmboss,
@@ -144,20 +156,23 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     double? intensity,
     double? surfaceIntensity,
     LightSource? lightSource,
-    double? borderRadius,
     bool? oppositeShadowLightSource,
   }) {
     return NeumorphicTheme(
       baseColor: baseColor ?? this.baseColor,
       accentColor: accentColor ?? this.accentColor,
+      variantColor: variantColor ?? this.variantColor,
+      disabledColor: disabledColor ?? this.disabledColor,
+      shape: shape ?? this.shape,
       boxShape: boxShape ?? this.boxShape,
+      borderColor: borderColor ?? this._borderColor,
+      borderWidth: borderWidth ?? this._borderWidth,
       shadowDarkColor: shadowDarkColor ?? this.shadowDarkColor,
       shadowLightColor: shadowLightColor ?? this.shadowLightColor,
       shadowDarkColorEmboss:
           shadowDarkColorEmboss ?? this.shadowDarkColorEmboss,
       shadowLightColorEmboss:
           shadowLightColorEmboss ?? this.shadowLightColorEmboss,
-      shape: shape ?? this.shape,
       depth: depth ?? this.depth,
       intensity: intensity ?? this.intensity,
       surfaceIntensity: surfaceIntensity ?? this.surfaceIntensity,
@@ -173,6 +188,12 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
       return this;
     }
     return NeumorphicTheme(
+      boxShape: NeumorphicBoxShape.lerp(boxShape, other.boxShape, t)!,
+      baseColor: Color.lerp(baseColor, other.baseColor, t)!,
+      accentColor: Color.lerp(accentColor, other.accentColor, t)!,
+      variantColor: Color.lerp(variantColor, other.variantColor, t)!,
+      disabledColor: Color.lerp(disabledColor, other.disabledColor, t)!,
+      borderColor: Color.lerp(_borderColor, other.border.color, t)!,
       shadowDarkColor: Color.lerp(shadowDarkColor, other.shadowDarkColor, t)!,
       shadowLightColor:
           Color.lerp(shadowLightColor, other.shadowLightColor, t)!,
@@ -187,6 +208,9 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     return copyWith(
       baseColor: colorScheme.secondaryContainer,
       accentColor: colorScheme.primary,
+      variantColor: colorScheme.surfaceVariant,
+      disabledColor: colorScheme.onSurfaceVariant,
+      borderColor: colorScheme.tertiary,
       shadowLightColor: colorScheme.brightness == Brightness.light
           ? colorScheme.surface
           : colorScheme.onSurface,
@@ -207,7 +231,7 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
         color: baseColor,
         boxShape: boxShape,
         shape: shape,
-        border: NeumorphicBorder(color: borderColor, width: borderWidth),
+        border: border,
         shadowDarkColor: shadowDarkColor,
         shadowLightColor: shadowLightColor,
         shadowDarkColorEmboss: shadowDarkColorEmboss,
@@ -222,6 +246,6 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
 
   @override
   String toString() {
-    return 'NeumorphicTheme{boxShape: $boxShape, _depth: $_depth, intensity: $intensity, lightSource: $lightSource, shape: $shape, oppositeShadowLightSource: $oppositeShadowLightSource}';
+    return 'NeumorphicTheme{boxShape: $boxShape, _depth: $_depth, intensity: $intensity, lightSource: $lightSource, shape: $shape, oppositeShadowLightSource: $oppositeShadowLightSource, border: $border}';
   }
 }

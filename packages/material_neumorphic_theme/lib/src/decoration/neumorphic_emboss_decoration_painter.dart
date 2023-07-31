@@ -111,15 +111,15 @@ class NeumorphicEmbossDecorationPainter extends BoxPainter {
 
   void _drawBorder(
       {required Canvas canvas, required Offset offset, required Path path}) {
-    if (style.border.width != null && style.border.width! > 0) {
+    if (style.border?.width != null && style.border!.width! > 0) {
       canvas
         ..save()
         ..translate(offset.dx, offset.dy)
         ..drawPath(
             path,
             _borderPaint
-              ..color = style.border.color ?? Color(0x00000000)
-              ..strokeWidth = style.border.width ?? 0)
+              ..color = style.border?.color ?? Color(0x00000000)
+              ..strokeWidth = style.border?.width ?? 0)
         ..restore();
     }
   }
@@ -155,7 +155,7 @@ class NeumorphicEmbossDecorationPainter extends BoxPainter {
         _paintBackground(canvas, subPath);
       }
 
-      if (style.border.isEnabled) {
+      if (style.border?.isEnabled ?? false) {
         _drawBorder(canvas: canvas, offset: offset, path: subPath);
       }
 

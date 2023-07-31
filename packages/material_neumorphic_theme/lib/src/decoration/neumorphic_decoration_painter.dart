@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
 import '../box_shape.dart';
 import '../shape.dart';
@@ -142,22 +143,22 @@ class NeumorphicDecorationPainter extends BoxPainter {
     if (drawGradient) {
       _drawGradient(offset: offset, canvas: canvas, path: path);
     }
-    if (style.border.isEnabled) {
+    if (style.border?.isEnabled ?? true) {
       _drawBorder(canvas: canvas, offset: offset, path: path);
     }
   }
 
   void _drawBorder(
       {required Canvas canvas, required Offset offset, required Path path}) {
-    if (style.border.width != null && style.border.width! > 0) {
+    if (style.border?.width != null && style.border!.width! > 0) {
       canvas
         ..save()
         ..translate(offset.dx, offset.dy)
         ..drawPath(
             path,
             _borderPaint
-              ..color = style.border.color ?? Color(0x00000000)
-              ..strokeWidth = style.border.width ?? 0)
+              ..color = style.border?.color ?? Color(0x00000000)
+              ..strokeWidth = style.border?.width ?? 0)
         ..restore();
     }
   }
@@ -202,7 +203,8 @@ class NeumorphicDecorationPainter extends BoxPainter {
 
       _gradientPaint.shader = getGradientShader(
         gradientRect: pathRect,
-        intensity: style.surfaceIntensity,
+        intensity:
+            style.surfaceIntensity ?? NeumorphicTheme.defaultSurfaceIntensity,
         source: style.shape == NeumorphicShape.concave
             ? style.lightSource
             : style.lightSource.invert(),

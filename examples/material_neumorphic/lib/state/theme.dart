@@ -104,6 +104,57 @@ class AppThemeData {
             ],
           ),
         );
+
+  AppThemeData copyWithNeumorphicTheme({
+    Color? seedColor,
+    double? depth,
+    LightSource? lightSource,
+    NeumorphicShape? shape,
+    double? intensity,
+    double? surfaceIntensity,
+  }) {
+    NeumorphicTheme light = lightThemeData.extension<NeumorphicTheme>()!;
+    NeumorphicTheme dark = darkThemeData.extension<NeumorphicTheme>()!;
+    if (seedColor != null) {
+      light = light.fitWithColorSchema(ColorScheme.fromSeed(
+          seedColor: seedColor, brightness: Brightness.light));
+      dark = dark.fitWithColorSchema(ColorScheme.fromSeed(
+          seedColor: seedColor, brightness: Brightness.dark));
+    }
+    return AppThemeData(
+      seedColor: seedColor ?? this.seedColor,
+      lightThemeData: lightThemeData.copyWith(
+        colorScheme: seedColor != null
+            ? ColorScheme.fromSeed(
+                seedColor: seedColor, brightness: Brightness.light)
+            : lightThemeData.colorScheme,
+        extensions: <ThemeExtension<dynamic>>[
+          light.copyWith(
+            depth: depth,
+            lightSource: lightSource,
+            shape: shape,
+            intensity: intensity,
+            surfaceIntensity: surfaceIntensity,
+          ),
+        ],
+      ),
+      darkThemeData: darkThemeData.copyWith(
+        colorScheme: seedColor != null
+            ? ColorScheme.fromSeed(
+                seedColor: seedColor, brightness: Brightness.dark)
+            : darkThemeData.colorScheme,
+        extensions: <ThemeExtension<dynamic>>[
+          dark.copyWith(
+            depth: depth,
+            lightSource: lightSource,
+            shape: shape,
+            intensity: intensity,
+            surfaceIntensity: surfaceIntensity,
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 @riverpod
@@ -129,8 +180,27 @@ class LocalAppThemeData extends _$LocalAppThemeData {
     return AppThemeData.fromSeed(seedColor);
   }
 
-  updateSeedColor(Color color) async {
-    state = AppThemeData.fromSeed(color);
+  updateWith(
+      {Color? seedColor,
+      double? depth,
+      double? intensity,
+      double? surfaceIntensity,
+      LightSource? lightSource,
+      NeumorphicShape? shape}) {
+    state = state.copyWithNeumorphicTheme(
+      seedColor: seedColor,
+      depth: depth,
+      lightSource: lightSource,
+      shape: shape,
+      intensity: intensity,
+      surfaceIntensity: surfaceIntensity,
+    );
+    if (seedColor != null) {
+      ref.read(localAppThemeDataProvider.notifier).saveSeedColor(seedColor);
+    }
+  }
+
+  saveSeedColor(Color color) async {
     final SharedPreferences pref = await ref.read(sharedPrefsProvider.future);
     final int? colorValue = pref.getInt('seedColor');
     Color seedColor;

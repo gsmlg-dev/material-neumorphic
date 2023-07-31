@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
 
 import '../shape.dart';
 import '../style.dart';
@@ -56,8 +57,8 @@ class NeumorphicDecorationTextPainter extends BoxPainter {
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.bevel
       ..style = PaintingStyle.stroke
-      ..strokeWidth = style.border.width ?? 0.0
-      ..color = style.border.color ?? Color(0xFFFFFFFF);
+      ..strokeWidth = style.border?.width ?? 0.0
+      ..color = style.border?.color ?? Color(0xFFFFFFFF);
   }
 
   final bool drawGradient;
@@ -186,7 +187,8 @@ class NeumorphicDecorationTextPainter extends BoxPainter {
         foreground: _gradientPaint
           ..shader = getGradientShader(
             gradientRect: Rect.fromLTRB(0, 0, _cache.width, _cache.height),
-            intensity: style.surfaceIntensity,
+            intensity: style.surfaceIntensity ??
+                NeumorphicTheme.defaultSurfaceIntensity,
             source: style.shape == NeumorphicShape.concave
                 ? style.lightSource
                 : style.lightSource.invert(),
@@ -224,14 +226,14 @@ class NeumorphicDecorationTextPainter extends BoxPainter {
     if (drawGradient) {
       _drawGradient(offset: offset, canvas: canvas, path: path);
     }
-    if (style.border.isEnabled) {
+    if (style.border?.isEnabled ?? true) {
       _drawBorder(canvas: canvas, offset: offset, path: path);
     }
   }
 
   void _drawBorder(
       {required Canvas canvas, required Offset offset, required Path path}) {
-    if (style.border.width != null && style.border.width! > 0) {
+    if (style.border?.width != null && style.border!.width! > 0) {
       canvas
         ..save()
         ..translate(offset.dx, offset.dy)

@@ -12,15 +12,15 @@ class NeumorphicStyle {
   final Color? color;
   final double? _depth;
   final double? _intensity;
-  final double _surfaceIntensity;
+  final double? _surfaceIntensity;
   final LightSource lightSource;
   final bool? disableDepth;
 
-  final NeumorphicBorder border;
+  final NeumorphicBorder? border;
 
   final bool oppositeShadowLightSource;
 
-  final NeumorphicShape shape;
+  final NeumorphicShape? shape;
   final NeumorphicBoxShape? boxShape;
 
   //override the "white" color
@@ -36,9 +36,9 @@ class NeumorphicStyle {
   final Color? shadowDarkColorEmboss;
 
   const NeumorphicStyle({
-    this.shape = NeumorphicShape.flat,
+    this.shape,
     this.lightSource = LightSource.topLeft,
-    this.border = const NeumorphicBorder.none(),
+    this.border,
     this.color,
     this.boxShape,
     this.shadowLightColor,
@@ -49,7 +49,7 @@ class NeumorphicStyle {
     this.disableDepth,
     double? depth,
     double? intensity,
-    double surfaceIntensity = 0.25,
+    double? surfaceIntensity,
   })  : _depth = depth,
         _intensity = intensity,
         _surfaceIntensity = surfaceIntensity;
@@ -60,7 +60,7 @@ class NeumorphicStyle {
   double? get intensity => _intensity?.clamp(
       NeumorphicTheme.minIntensity, NeumorphicTheme.maxIntensity);
 
-  double get surfaceIntensity => _surfaceIntensity.clamp(
+  double? get surfaceIntensity => _surfaceIntensity?.clamp(
       NeumorphicTheme.minIntensity, NeumorphicTheme.maxIntensity);
 
   NeumorphicStyle merge(NeumorphicStyle? other) {
@@ -76,12 +76,12 @@ class NeumorphicStyle {
             other.shadowDarkColorEmboss ?? shadowDarkColorEmboss,
         shadowLightColorEmboss:
             other.shadowLightColorEmboss ?? shadowLightColorEmboss,
+        disableDepth: other.disableDepth ?? disableDepth,
         depth: other.depth ?? depth,
         intensity: other.intensity ?? intensity,
-        disableDepth: other.disableDepth ?? disableDepth,
-        surfaceIntensity: other.surfaceIntensity,
-        shape: other.shape,
-        border: other.border,
+        surfaceIntensity: other.surfaceIntensity ?? surfaceIntensity,
+        shape: other.shape ?? shape,
+        border: other.border ?? border,
         oppositeShadowLightSource: other.oppositeShadowLightSource,
         lightSource: other.lightSource);
   }
@@ -90,9 +90,8 @@ class NeumorphicStyle {
     return NeumorphicStyle(
         color: color ?? theme.baseColor,
         boxShape: boxShape ?? theme.boxShape,
-        shape: shape,
-        border: border.copyWithThemeIfNull(
-            color: theme.borderColor, width: theme.borderWidth),
+        shape: shape ?? theme.shape,
+        border: border ?? theme.border,
         shadowDarkColor: shadowDarkColor ?? theme.shadowDarkColor,
         shadowLightColor: shadowLightColor ?? theme.shadowLightColor,
         shadowDarkColorEmboss:
