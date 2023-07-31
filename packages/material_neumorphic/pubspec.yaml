@@ -24,6 +24,7 @@ dependencies:
   material_neumorphic_switch: ^1.1.1
   material_neumorphic_text: ^1.1.1
   material_neumorphic_toggle: ^1.1.1
+  material_neumorphic_theme: ^1.1.1
 
 dev_dependencies:
   lints: ^2.0.0
