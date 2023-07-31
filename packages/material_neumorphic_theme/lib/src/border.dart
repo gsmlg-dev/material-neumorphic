@@ -16,8 +16,8 @@ class NeumorphicBorder {
 
   const NeumorphicBorder.none()
       : isEnabled = true,
-        color = const Color(0x00000000),
-        width = 0;
+        color = null,
+        width = null;
 
   @override
   bool operator ==(Object other) =>

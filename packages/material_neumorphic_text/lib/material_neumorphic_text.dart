@@ -28,7 +28,7 @@ class NeumorphicText extends StatelessWidget {
         .getNeumorphicStyle()
         .merge(this.style)
         .applyDisableDepth();
-
+    print('default text style: ${DefaultTextStyle.of(context).style}');
     return _NeumorphicText(
       textStyle: textStyle ?? DefaultTextStyle.of(context).style,
       textAlign: textAlign ??

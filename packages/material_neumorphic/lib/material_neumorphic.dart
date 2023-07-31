@@ -10,3 +10,5 @@ export 'package:material_neumorphic_slider/material_neumorphic_slider.dart';
 export 'package:material_neumorphic_slider/material_neumorphic_range_slider.dart';
 export 'package:material_neumorphic_switch/material_neumorphic_switch.dart';
 export 'package:material_neumorphic_text/material_neumorphic_text.dart';
+export 'package:material_neumorphic_toggle/material_neumorphic_toggle.dart';
+export 'package:material_neumorphic_theme/material_neumorphic_theme.dart';
