@@ -177,11 +177,7 @@ class NeumorphicCheckbox extends StatelessWidget {
       margin: margin,
       duration: duration,
       curve: curve,
-      onPressed: () {
-        if (isEnabled) {
-          _onClick();
-        }
-      },
+      onPressed: isEnabled ? _onClick : null,
       drawSurfaceAboveChild: true,
       minDistance: selectedDepth.abs(),
       child: Icon(

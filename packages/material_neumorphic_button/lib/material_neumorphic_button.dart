@@ -184,7 +184,7 @@ class _NeumorphicButtonState extends State<NeumorphicButton> {
         child: MouseRegion(
           cursor: widget.isEnabled
               ? SystemMouseCursors.click
-              : SystemMouseCursors.basic,
+              : SystemMouseCursors.forbidden,
           child: Neumorphic(
             margin: widget.margin ?? const EdgeInsets.all(0),
             drawSurfaceAboveChild: widget.drawSurfaceAboveChild,

@@ -291,6 +291,7 @@ class FormScreen extends ConsumerWidget {
                                       padding: const EdgeInsets.all(12),
                                       child: Row(children: [
                                         NeumorphicCheckbox(
+                                            isEnabled: false,
                                             value: formData.zones[2],
                                             onChanged: (value) {
                                               ref
