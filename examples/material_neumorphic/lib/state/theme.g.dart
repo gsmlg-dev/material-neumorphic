@@ -20,7 +20,7 @@ final appSeedColorProvider = AutoDisposeProvider<Color>.internal(
 );
 
 typedef AppSeedColorRef = AutoDisposeProviderRef<Color>;
-String _$localAppThemeDataHash() => r'1958e6c89e99bb81fe398f0ed486abc463401477';
+String _$localAppThemeDataHash() => r'3304ca2095621fd54780853a7b3a96bcce8d4cbb';
 
 /// See also [LocalAppThemeData].
 @ProviderFor(LocalAppThemeData)
