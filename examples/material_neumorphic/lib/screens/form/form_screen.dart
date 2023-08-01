@@ -155,48 +155,59 @@ class FormScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text('Role'),
-                              Row(
+                              Wrap(
+                                spacing: 12,
+                                runSpacing: 12,
                                 children: [
-                                  NeumorphicRadio(
-                                    value: AppUserRole.developer,
-                                    groupValue: formData.role,
-                                    onChanged: (value) {
-                                      ref
-                                          .read(exampleAppFormDataProvider
-                                              .notifier)
-                                          .updateWith(role: value);
-                                    },
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: const Center(
-                                      child: Text('Devloper'),
+                                  SizedBox(
+                                    width: 200,
+                                    child: NeumorphicRadio(
+                                      value: AppUserRole.developer,
+                                      groupValue: formData.role,
+                                      onChanged: (value) {
+                                        ref
+                                            .read(exampleAppFormDataProvider
+                                                .notifier)
+                                            .updateWith(role: value);
+                                      },
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Center(
+                                        child: Text('Devloper'),
+                                      ),
                                     ),
                                   ),
-                                  NeumorphicRadio(
-                                    value: AppUserRole.designer,
-                                    groupValue: formData.role,
-                                    onChanged: (value) {
-                                      ref
-                                          .read(exampleAppFormDataProvider
-                                              .notifier)
-                                          .updateWith(role: value);
-                                    },
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: const Center(
-                                      child: Text('Designer'),
+                                  SizedBox(
+                                    width: 200,
+                                    child: NeumorphicRadio(
+                                      value: AppUserRole.designer,
+                                      groupValue: formData.role,
+                                      onChanged: (value) {
+                                        ref
+                                            .read(exampleAppFormDataProvider
+                                                .notifier)
+                                            .updateWith(role: value);
+                                      },
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Center(
+                                        child: Text('Designer'),
+                                      ),
                                     ),
                                   ),
-                                  NeumorphicRadio(
-                                    value: AppUserRole.productManager,
-                                    groupValue: formData.role,
-                                    onChanged: (value) {
-                                      ref
-                                          .read(exampleAppFormDataProvider
-                                              .notifier)
-                                          .updateWith(role: value);
-                                    },
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: const Center(
-                                      child: Text('Product Manager'),
+                                  SizedBox(
+                                    width: 200,
+                                    child: NeumorphicRadio(
+                                      value: AppUserRole.productManager,
+                                      groupValue: formData.role,
+                                      onChanged: (value) {
+                                        ref
+                                            .read(exampleAppFormDataProvider
+                                                .notifier)
+                                            .updateWith(role: value);
+                                      },
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: const Center(
+                                        child: Text('Product Manager'),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -242,72 +253,83 @@ class FormScreen extends ConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               const Text('Zone'),
-                              Row(
+                              Wrap(
+                                spacing: 12,
+                                runSpacing: 12,
                                 children: [
-                                  Neumorphic(
-                                      margin: const EdgeInsets.all(12),
-                                      padding: const EdgeInsets.all(12),
-                                      child: Row(children: [
-                                        NeumorphicCheckbox(
-                                            value: formData.zones[0],
-                                            onChanged: (value) {
-                                              ref
-                                                  .read(
-                                                      exampleAppFormDataProvider
-                                                          .notifier)
-                                                  .updateWith(
-                                                      zones: List.from(
-                                                          formData.zones)
-                                                        ..[0] = value);
-                                            }),
-                                        const SizedBox(
-                                            width: 100,
-                                            child:
-                                                Center(child: Text('Zone 1'))),
-                                      ])),
-                                  Neumorphic(
-                                      margin: const EdgeInsets.all(12),
-                                      padding: const EdgeInsets.all(12),
-                                      child: Row(children: [
-                                        NeumorphicCheckbox(
-                                            value: formData.zones[1],
-                                            onChanged: (value) {
-                                              ref
-                                                  .read(
-                                                      exampleAppFormDataProvider
-                                                          .notifier)
-                                                  .updateWith(
-                                                      zones: List.from(
-                                                          formData.zones)
-                                                        ..[1] = value);
-                                            }),
-                                        const SizedBox(
-                                            width: 100,
-                                            child:
-                                                Center(child: Text('Zone 2'))),
-                                      ])),
-                                  Neumorphic(
-                                      margin: const EdgeInsets.all(12),
-                                      padding: const EdgeInsets.all(12),
-                                      child: Row(children: [
-                                        NeumorphicCheckbox(
-                                            isEnabled: false,
-                                            value: formData.zones[2],
-                                            onChanged: (value) {
-                                              ref
-                                                  .read(
-                                                      exampleAppFormDataProvider
-                                                          .notifier)
-                                                  .updateWith(
-                                                      zones: List.from(
-                                                          formData.zones)
-                                                        ..[2] = value);
-                                            }),
-                                        const SizedBox(
-                                            width: 100,
-                                            child:
-                                                Center(child: Text('Zone 3'))),
-                                      ])),
+                                  SizedBox(
+                                    width: 240,
+                                    child: Neumorphic(
+                                        margin: const EdgeInsets.all(12),
+                                        padding: const EdgeInsets.all(12),
+                                        child: Row(children: [
+                                          NeumorphicCheckbox(
+                                              value: formData.zones[0],
+                                              onChanged: (value) {
+                                                ref
+                                                    .read(
+                                                        exampleAppFormDataProvider
+                                                            .notifier)
+                                                    .updateWith(
+                                                        zones: List.from(
+                                                            formData.zones)
+                                                          ..[0] = value);
+                                              }),
+                                          const SizedBox(
+                                              width: 100,
+                                              child: Center(
+                                                  child: Text('Zone 1'))),
+                                        ])),
+                                  ),
+                                  SizedBox(
+                                    width: 240,
+                                    child: Neumorphic(
+                                        margin: const EdgeInsets.all(12),
+                                        padding: const EdgeInsets.all(12),
+                                        child: Row(children: [
+                                          NeumorphicCheckbox(
+                                              value: formData.zones[1],
+                                              onChanged: (value) {
+                                                ref
+                                                    .read(
+                                                        exampleAppFormDataProvider
+                                                            .notifier)
+                                                    .updateWith(
+                                                        zones: List.from(
+                                                            formData.zones)
+                                                          ..[1] = value);
+                                              }),
+                                          const SizedBox(
+                                              width: 100,
+                                              child: Center(
+                                                  child: Text('Zone 2'))),
+                                        ])),
+                                  ),
+                                  SizedBox(
+                                    width: 240,
+                                    child: Neumorphic(
+                                        margin: const EdgeInsets.all(12),
+                                        padding: const EdgeInsets.all(12),
+                                        child: Row(children: [
+                                          NeumorphicCheckbox(
+                                              isEnabled: false,
+                                              value: formData.zones[2],
+                                              onChanged: (value) {
+                                                ref
+                                                    .read(
+                                                        exampleAppFormDataProvider
+                                                            .notifier)
+                                                    .updateWith(
+                                                        zones: List.from(
+                                                            formData.zones)
+                                                          ..[2] = value);
+                                              }),
+                                          const SizedBox(
+                                              width: 100,
+                                              child: Center(
+                                                  child: Text('Zone 3'))),
+                                        ])),
+                                  ),
                                 ],
                               )
                             ]),
