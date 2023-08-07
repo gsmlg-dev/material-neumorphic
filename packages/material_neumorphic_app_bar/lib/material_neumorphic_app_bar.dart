@@ -173,8 +173,6 @@ class _NeumorphicAppBarState extends State<NeumorphicAppBar> {
 
     Widget? title = widget.title;
     if (title != null) {
-      print(
-          'appbar textstyle: ${widget.textStyle}, copyWith: ${theme.colorScheme.onPrimary}');
       title = DefaultTextStyle(
         style: widget.textStyle ??
             Theme.of(context)
