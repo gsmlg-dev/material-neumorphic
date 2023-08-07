@@ -70,6 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       extendBody: true,
+      floatingActionButton: NeumorphicFloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
       body: NeumorphicBackground(
         child: SafeArea(
           child: Center(
