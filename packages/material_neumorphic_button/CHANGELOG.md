@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**: Add NeumorphicFloatingActionButton. ([#3](https://github.com/gsmlg-dev/material-neumorphic/issues/3)). ([46eb0ebe](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb0ebea3d64f1fa67f876b2c140e14dc1fdb02))
+
 ## 1.1.1
 
  - **FIX**: Add example and fix bugs. ([#2](https://github.com/gsmlg-dev/material-neumorphic/issues/2)). ([aee868f9](https://github.com/gsmlg-dev/material-neumorphic/commit/aee868f9c060db20e0fe03cd60574cf5dc523bb1))

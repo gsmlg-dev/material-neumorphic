@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - **FIX**: Fix missing dependency. ([5efad58c](https://github.com/gsmlg-dev/material-neumorphic/commit/5efad58ccedbf16507a92cd8525d48a92a3bb815))
+
 ## 1.1.1
 
  - **FIX**: Add example and fix bugs. ([#2](https://github.com/gsmlg-dev/material-neumorphic/issues/2)). ([aee868f9](https://github.com/gsmlg-dev/material-neumorphic/commit/aee868f9c060db20e0fe03cd60574cf5dc523bb1))

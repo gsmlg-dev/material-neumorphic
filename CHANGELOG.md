@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-08-07
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`material_neumorphic` - `v1.1.2`](#material_neumorphic---v112)
+ - [`material_neumorphic_app_bar` - `v1.2.0`](#material_neumorphic_app_bar---v120)
+ - [`material_neumorphic_button` - `v1.2.0`](#material_neumorphic_button---v120)
+ - [`material_neumorphic_checkbox` - `v1.1.2`](#material_neumorphic_checkbox---v112)
+ - [`material_neumorphic_radio` - `v1.1.2`](#material_neumorphic_radio---v112)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `material_neumorphic_checkbox` - `v1.1.2`
+ - `material_neumorphic_radio` - `v1.1.2`
+
+---
+
+#### `material_neumorphic` - `v1.1.2`
+
+ - **FIX**: Fix missing dependency. ([5efad58c](https://github.com/gsmlg-dev/material-neumorphic/commit/5efad58ccedbf16507a92cd8525d48a92a3bb815))
+
+#### `material_neumorphic_app_bar` - `v1.2.0`
+
+ - **FEAT**: Add NeumorphicFloatingActionButton. ([#3](https://github.com/gsmlg-dev/material-neumorphic/issues/3)). ([46eb0ebe](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb0ebea3d64f1fa67f876b2c140e14dc1fdb02))
+
+#### `material_neumorphic_button` - `v1.2.0`
+
+ - **FEAT**: Add NeumorphicFloatingActionButton. ([#3](https://github.com/gsmlg-dev/material-neumorphic/issues/3)). ([46eb0ebe](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb0ebea3d64f1fa67f876b2c140e14dc1fdb02))
+
+
 ## 2023-08-01
 
 ### Changes
