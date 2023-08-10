@@ -226,6 +226,7 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
     );
   }
 
+  @Deprecated('`getNeumorphicStyle` is deprecated, use getter style instead.')
   NeumorphicStyle getNeumorphicStyle() {
     return NeumorphicStyle(
         color: baseColor,
@@ -242,6 +243,59 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
         surfaceIntensity: surfaceIntensity,
         oppositeShadowLightSource: oppositeShadowLightSource,
         lightSource: lightSource);
+  }
+
+  NeumorphicStyle get style {
+    return NeumorphicStyle(
+        color: baseColor,
+        boxShape: boxShape,
+        shape: shape,
+        border: border,
+        shadowDarkColor: shadowDarkColor,
+        shadowLightColor: shadowLightColor,
+        shadowDarkColorEmboss: shadowDarkColorEmboss,
+        shadowLightColorEmboss: shadowLightColorEmboss,
+        depth: depth,
+        intensity: intensity,
+        disableDepth: false,
+        surfaceIntensity: surfaceIntensity,
+        oppositeShadowLightSource: oppositeShadowLightSource,
+        lightSource: lightSource);
+  }
+
+  NeumorphicStyle styleWith({
+    Color? color,
+    NeumorphicBorder? border,
+    NeumorphicBoxShape? boxShape,
+    Color? shadowLightColor,
+    Color? shadowDarkColor,
+    Color? shadowLightColorEmboss,
+    Color? shadowDarkColorEmboss,
+    double? depth,
+    double? intensity,
+    double? surfaceIntensity,
+    LightSource? lightSource,
+    bool? disableDepth,
+    double? borderRadius,
+    bool? oppositeShadowLightSource,
+    NeumorphicShape? shape,
+  }) {
+    return style.copyWith(
+      color: color,
+      border: border,
+      boxShape: boxShape,
+      shadowDarkColor: shadowDarkColor,
+      shadowLightColor: shadowLightColor,
+      shadowDarkColorEmboss: shadowDarkColorEmboss,
+      shadowLightColorEmboss: shadowLightColorEmboss,
+      depth: depth,
+      intensity: intensity,
+      surfaceIntensity: surfaceIntensity,
+      disableDepth: disableDepth,
+      lightSource: lightSource,
+      oppositeShadowLightSource: oppositeShadowLightSource,
+      shape: shape,
+    );
   }
 
   @override

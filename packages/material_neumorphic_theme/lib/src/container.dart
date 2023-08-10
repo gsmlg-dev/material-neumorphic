@@ -9,7 +9,7 @@ import 'style.dart';
 @immutable
 class Neumorphic extends StatelessWidget {
   final Widget? child;
-
+  final Color? color;
   final NeumorphicStyle? style;
   final EdgeInsets? padding;
   final EdgeInsets? margin;
@@ -22,6 +22,7 @@ class Neumorphic extends StatelessWidget {
   Neumorphic({
     Key? key,
     this.child,
+    this.color,
     this.style,
     this.margin,
     this.padding,
@@ -34,12 +35,11 @@ class Neumorphic extends StatelessWidget {
   Widget build(BuildContext context) {
     final NeumorphicTheme? neumorphicTheme =
         Theme.of(context).extension<NeumorphicTheme>();
-    final NeumorphicStyle style =
-        (neumorphicTheme?.getNeumorphicStyle() ?? NeumorphicStyle())
-            .merge(this.style);
+    final NeumorphicStyle style = (neumorphicTheme?.style ?? NeumorphicStyle())
+        .merge(this.style)
+        .copyWith(color: color);
 
     return _NeumorphicContainer(
-      color: style.color!,
       padding: padding,
       drawSurfaceAboveChild: drawSurfaceAboveChild,
       duration: duration,
@@ -52,7 +52,6 @@ class Neumorphic extends StatelessWidget {
 }
 
 class _NeumorphicContainer extends StatelessWidget {
-  final Color color;
   final NeumorphicStyle style;
   final Widget? child;
   final EdgeInsets? margin;
@@ -64,7 +63,6 @@ class _NeumorphicContainer extends StatelessWidget {
   _NeumorphicContainer({
     Key? key,
     this.child,
-    required this.color,
     required this.padding,
     required this.margin,
     required this.duration,
