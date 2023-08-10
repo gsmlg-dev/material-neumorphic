@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'neumorphic_path_provider.dart';
 
+@immutable
 class RectPathProvider extends NeumorphicPathProvider {
   const RectPathProvider({Listenable? reclip});
 

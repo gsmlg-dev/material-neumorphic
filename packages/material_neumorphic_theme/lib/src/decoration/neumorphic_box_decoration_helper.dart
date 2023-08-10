@@ -15,8 +15,8 @@ Shader getGradientShader(
     begin: Alignment(source.dx, source.dy),
     end: Alignment(sourceInvert.dx, sourceInvert.dy),
     colors: <Color>[
-      NeumorphicColors.gradientShaderDarkColor(intensity: currentIntensity),
-      NeumorphicColors.gradientShaderWhiteColor(
+      NeumorphicTheme.gradientShaderDarkColor(intensity: currentIntensity),
+      NeumorphicTheme.gradientShaderWhiteColor(
           intensity: currentIntensity * (2 / 5)),
     ],
     stops: [

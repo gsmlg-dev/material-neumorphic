@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../neumorphic_path_provider.dart';
 
+@immutable
 class NeumorphicFlutterLogoPathProvider extends NeumorphicPathProvider {
   @override
   bool shouldReclip(NeumorphicPathProvider oldClipper) {

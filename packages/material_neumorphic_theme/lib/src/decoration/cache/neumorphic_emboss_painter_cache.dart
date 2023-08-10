@@ -8,7 +8,7 @@ class NeumorphicEmbossPainterCache
   @override
   Color generateShadowDarkColor(
       {required Color color, required double intensity}) {
-    return NeumorphicColors.embossDarkColor(
+    return NeumorphicTheme.embossDarkColor(
       color,
       intensity: intensity,
     );
@@ -17,7 +17,7 @@ class NeumorphicEmbossPainterCache
   @override
   Color generateShadowLightColor(
       {required Color color, required double intensity}) {
-    return NeumorphicColors.embossWhiteColor(
+    return NeumorphicTheme.embossWhiteColor(
       color,
       intensity: intensity,
     );

@@ -32,6 +32,61 @@ class NeumorphicTheme extends ThemeExtension<NeumorphicTheme> {
   static const double minCurve = 0.0;
   static const double maxCurve = 1.0;
 
+  static const Color _gradientShaderDarkColor = Color(0x8A000000);
+  static const Color _gradientShaderWhiteColor = Color(0xFFFFFFFF);
+
+  static Color decorationWhiteColor(Color color, {required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+      maxColor: color,
+      percent: intensity,
+    );
+  }
+
+  static Color decorationDarkColor(Color color, {required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+      maxColor: color,
+      percent: intensity,
+    );
+  }
+
+  static Color embossWhiteColor(Color color, {required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+      maxColor: color,
+      percent: intensity,
+    );
+  }
+
+  static Color embossDarkColor(Color color, {required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+      maxColor: color,
+      percent: intensity,
+    );
+  }
+
+  static Color gradientShaderDarkColor({required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+        maxColor: _gradientShaderDarkColor, percent: intensity);
+  }
+
+  static Color gradientShaderWhiteColor({required double intensity}) {
+    // intensity act on opacity;
+    return _applyPercentageOnOpacity(
+        maxColor: _gradientShaderWhiteColor, percent: intensity);
+  }
+
+  static Color _applyPercentageOnOpacity(
+      {required Color maxColor, required double percent}) {
+    final maxOpacity = maxColor.opacity;
+    final newOpacity = percent * maxOpacity / maxIntensity;
+    final newColor = maxColor.withOpacity(newOpacity);
+    return newColor;
+  }
+
   final Color? _baseColor;
   final Color? _accentColor;
   final Color? _variantColor;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'neumorphic_path_provider.dart';
 
+@immutable
 class RRectPathProvider extends NeumorphicPathProvider {
   final BorderRadius borderRadius;
 

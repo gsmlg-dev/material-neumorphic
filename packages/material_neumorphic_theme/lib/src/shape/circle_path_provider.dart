@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'neumorphic_path_provider.dart';
 
+@immutable
 class CirclePathProvider extends NeumorphicPathProvider {
   const CirclePathProvider({Listenable? reclip});
 

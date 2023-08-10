@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'neumorphic_path_provider.dart';
 import 'dart:math' as math;
 
+@immutable
 class BeveledPathProvider extends NeumorphicPathProvider {
   final BorderRadius borderRadius;
 
