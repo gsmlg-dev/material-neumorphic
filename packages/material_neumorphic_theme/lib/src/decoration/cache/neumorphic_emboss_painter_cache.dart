@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import '../../colors.dart';
+import '../../theme.dart';
 import 'abstract_neumorphic_painter_cache.dart';
 
 class NeumorphicEmbossPainterCache

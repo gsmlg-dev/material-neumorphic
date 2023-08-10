@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import '../colors.dart';
+import '../theme.dart';
 import '../light_source.dart';
 
 Shader getGradientShader(
