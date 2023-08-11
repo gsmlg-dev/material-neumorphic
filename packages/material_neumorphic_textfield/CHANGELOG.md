@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**: Add material_neumorphic_textfield. ([81b76fa0](https://github.com/gsmlg-dev/material-neumorphic/commit/81b76fa0327e5abbd0f4b6990331379e6e1680d3))
+
 ## 1.1.2
 
  - Update a dependency to the latest release.

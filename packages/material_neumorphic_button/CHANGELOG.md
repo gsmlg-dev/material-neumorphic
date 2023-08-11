@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - Update a dependency to the latest release.
+
 ## 1.2.0
 
  - **FEAT**: Add NeumorphicFloatingActionButton. ([#3](https://github.com/gsmlg-dev/material-neumorphic/issues/3)). ([46eb0ebe](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb0ebea3d64f1fa67f876b2c140e14dc1fdb02))

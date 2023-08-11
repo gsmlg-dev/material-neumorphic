@@ -1,3 +1,7 @@
+## 1.2.0
+
+ - **FEAT**: add material_neumorphic_textfield adn material_neumorphic_dropdown. ([46eb4038](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb4038a9d14654296cb32457c7a7db273388a4))
+
 ## 1.1.2
 
  - **FIX**: Fix missing dependency. ([5efad58c](https://github.com/gsmlg-dev/material-neumorphic/commit/5efad58ccedbf16507a92cd8525d48a92a3bb815))

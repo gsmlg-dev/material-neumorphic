@@ -10,9 +10,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  material_neumorphic_theme: ^1.1.1
-  material_neumorphic_background: ^1.1.1
-  material_neumorphic_switch: ^1.1.1
+  material_neumorphic_theme: ^1.1.2
+  material_neumorphic_background: ^1.1.2
+  material_neumorphic_switch: ^1.1.2
 
 dev_dependencies:
   flutter_test:

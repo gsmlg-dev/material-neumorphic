@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2023-08-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`material_neumorphic` - `v1.2.0`](#material_neumorphic---v120)
+ - [`material_neumorphic_dropdown` - `v1.1.0`](#material_neumorphic_dropdown---v110)
+ - [`material_neumorphic_textfield` - `v1.1.0`](#material_neumorphic_textfield---v110)
+ - [`material_neumorphic_theme` - `v1.1.2`](#material_neumorphic_theme---v112)
+ - [`material_neumorphic_text` - `v1.1.2`](#material_neumorphic_text---v112)
+ - [`material_neumorphic_slider` - `v1.1.2`](#material_neumorphic_slider---v112)
+ - [`material_neumorphic_background` - `v1.1.2`](#material_neumorphic_background---v112)
+ - [`material_neumorphic_app_bar` - `v1.2.1`](#material_neumorphic_app_bar---v121)
+ - [`material_neumorphic_checkbox` - `v1.1.3`](#material_neumorphic_checkbox---v113)
+ - [`material_neumorphic_icon` - `v1.1.2`](#material_neumorphic_icon---v112)
+ - [`material_neumorphic_progress` - `v1.1.2`](#material_neumorphic_progress---v112)
+ - [`material_neumorphic_toggle` - `v1.1.2`](#material_neumorphic_toggle---v112)
+ - [`material_neumorphic_button` - `v1.2.1`](#material_neumorphic_button---v121)
+ - [`material_neumorphic_radio` - `v1.1.3`](#material_neumorphic_radio---v113)
+ - [`material_neumorphic_switch` - `v1.1.2`](#material_neumorphic_switch---v112)
+ - [`material_neumorphic_indicator` - `v1.1.2`](#material_neumorphic_indicator---v112)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `material_neumorphic_text` - `v1.1.2`
+ - `material_neumorphic_slider` - `v1.1.2`
+ - `material_neumorphic_background` - `v1.1.2`
+ - `material_neumorphic_app_bar` - `v1.2.1`
+ - `material_neumorphic_checkbox` - `v1.1.3`
+ - `material_neumorphic_icon` - `v1.1.2`
+ - `material_neumorphic_progress` - `v1.1.2`
+ - `material_neumorphic_toggle` - `v1.1.2`
+ - `material_neumorphic_button` - `v1.2.1`
+ - `material_neumorphic_radio` - `v1.1.3`
+ - `material_neumorphic_switch` - `v1.1.2`
+ - `material_neumorphic_indicator` - `v1.1.2`
+
+---
+
+#### `material_neumorphic` - `v1.2.0`
+
+ - **FEAT**: add material_neumorphic_textfield adn material_neumorphic_dropdown. ([46eb4038](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb4038a9d14654296cb32457c7a7db273388a4))
+
+#### `material_neumorphic_dropdown` - `v1.1.0`
+
+ - **FEAT**: Add material_neumorphic_dropdown. ([55305594](https://github.com/gsmlg-dev/material-neumorphic/commit/55305594987e1c0cc8cfaa38f93ea32f08f292e5))
+
+#### `material_neumorphic_textfield` - `v1.1.0`
+
+ - **FEAT**: Add material_neumorphic_textfield. ([81b76fa0](https://github.com/gsmlg-dev/material-neumorphic/commit/81b76fa0327e5abbd0f4b6990331379e6e1680d3))
+
+#### `material_neumorphic_theme` - `v1.1.2`
+
+ - **FIX**: Move colors to theme. ([06edbe49](https://github.com/gsmlg-dev/material-neumorphic/commit/06edbe49da8d9647d6361e89cfc0c1015e755a24))
+ - **FIX**: Move colors to theme. ([3a6375f6](https://github.com/gsmlg-dev/material-neumorphic/commit/3a6375f63cf6ee5026e54ece6db6c54d55691d22))
+ - **FIX**: Optimize theme and shape. ([adc9b7c8](https://github.com/gsmlg-dev/material-neumorphic/commit/adc9b7c879ec4dc9c2520981b714798297bc98cc))
+ - **FIX**: Optimize theme and container. ([7a051a49](https://github.com/gsmlg-dev/material-neumorphic/commit/7a051a4983ff0afc34fba33b5a1ed733addb306a))
+
+
 ## 2023-08-07
 
 ### Changes

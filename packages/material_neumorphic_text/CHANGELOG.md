@@ -1,3 +1,7 @@
+## 1.1.2
+
+ - Update a dependency to the latest release.
+
 ## 1.1.1
 
  - **FIX**: Add example and fix bugs. ([#2](https://github.com/gsmlg-dev/material-neumorphic/issues/2)). ([aee868f9](https://github.com/gsmlg-dev/material-neumorphic/commit/aee868f9c060db20e0fe03cd60574cf5dc523bb1))

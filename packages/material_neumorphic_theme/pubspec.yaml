@@ -2,7 +2,7 @@ name: material_neumorphic_theme
 description: |
   A Flutter package for creating Neumorphic theme.
   Use material colorscheme to set neumorphic theme colors.
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:

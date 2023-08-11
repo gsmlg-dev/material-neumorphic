@@ -1,3 +1,7 @@
+## 1.1.0
+
+ - **FEAT**: Add material_neumorphic_dropdown. ([55305594](https://github.com/gsmlg-dev/material-neumorphic/commit/55305594987e1c0cc8cfaa38f93ea32f08f292e5))
+
 ## 1.1.2
 
  - Update a dependency to the latest release.

@@ -1,7 +1,7 @@
 name: material_neumorphic_background
 description: |
   A Flutter package for creating Neumorphic background.
-version: 1.1.1
+version: 1.1.2
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_neumorphic_theme: ^1.1.1
+  material_neumorphic_theme: ^1.1.2
 
 dev_dependencies:
   flutter_test:
