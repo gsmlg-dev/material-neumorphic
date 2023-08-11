@@ -26,7 +26,7 @@ class SplashScreen extends ConsumerWidget {
           child: Center(
             child: Neumorphic(
                 margin: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle().copyWith(
+                style: neumorphicTheme.styleWith(
                     boxShape: NeumorphicBoxShape.roundRect(
                         BorderRadius.circular(12))),
                 child: SizedBox(
@@ -37,11 +37,9 @@ class SplashScreen extends ConsumerWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Neumorphic(
-                            style: neumorphicTheme
-                                .getNeumorphicStyle()
-                                .copyWith(
-                                    boxShape: NeumorphicBoxShape.path(
-                                        NeumorphicFlutterLogoPathProvider())),
+                            style: neumorphicTheme.styleWith(
+                                boxShape: NeumorphicBoxShape.path(
+                                    NeumorphicFlutterLogoPathProvider())),
                             child: const SizedBox(
                               width: 200,
                               height: 200,

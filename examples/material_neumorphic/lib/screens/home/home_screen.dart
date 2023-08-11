@@ -23,9 +23,8 @@ class HomeScreen extends ConsumerWidget {
         child: SafeArea(
           child: Center(
             child: Neumorphic(
-                style: neumorphicTheme
-                    .getNeumorphicStyle()
-                    .copyWith(boxShape: const NeumorphicBoxShape.circle()),
+                style: neumorphicTheme.styleWith(
+                    boxShape: const NeumorphicBoxShape.circle()),
                 child: SizedBox(
                     width: width * 0.8,
                     height: width * 0.8,
@@ -33,7 +32,7 @@ class HomeScreen extends ConsumerWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Neumorphic(
-                          style: neumorphicTheme.getNeumorphicStyle().copyWith(
+                          style: neumorphicTheme.styleWith(
                               boxShape: NeumorphicBoxShape.path(
                                   NeumorphicFlutterLogoPathProvider())),
                           child: SizedBox(

@@ -73,7 +73,6 @@ class NeumorphicDecoration extends Decoration {
   }
 
   NeumorphicDecoration scale(double factor) {
-    print("scale");
     return NeumorphicDecoration(
         isForeground: isForeground,
         renderingByPath: renderingByPath,

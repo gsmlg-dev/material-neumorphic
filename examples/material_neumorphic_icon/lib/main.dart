@@ -55,7 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final size = MediaQuery.of(context).size;
-    print('size: $size');
 
     final int gridColumns = (size.width / (48 + 18 * 3)).floor();
 

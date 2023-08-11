@@ -1,53 +1,79 @@
-# Material Neumorphic Checkbox
+# Material Neumorphic Dropdown
 
 Part of [Material Neumorphic](https://github.com/gsmlg-dev/material_neumorphic) widgets suit.
 
 ## Usage
 
-A Neumorphic Checkbox
+A Neumorphic Dropdown
 
-takes a NeumorphicCheckboxStyle as `style`
-takes the current checked state as `value`
-
-notifies the parent when user interact with this widget with `onChanged`
+Add properties than origin Dropdown:
 
 ```dart
-bool check1 = false;
-bool check2 = false;
-bool check3 = false;
+  final NeumorphicStyle? neumorphicStyle;
+  final EdgeInsets? margin;
+  final Color? color;
+  final double? depth;
+```
 
-Widget _buildChecks() {
-    return Row(
-        children: <Widget>[
+**example:**
 
-            NeumorphicCheckbox(
-                value: check1,
+```dart
+build(context) {
+    return Column(
+        children: [
+            NeumorphicDropdown(
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(12.0)),
+                depth: -4,
+                value: name,
+                items: [
+                    DropdownMenuItem(
+                        child: Text('A'),
+                        value: 'A',
+                    ),
+                    DropdownMenuItem(
+                        child: Text('B'),
+                        value: 'B',
+                    ),
+                    DropdownMenuItem(
+                        child: Text('C'),
+                        value: 'C',
+                    ),
+                ],
                 onChanged: (value) {
                     setState(() {
-                        check1 = value;
+                        name = value;
                     });
                 },
             ),
-
-            NeumorphicCheckbox(
-                value: check2,
+            NeumorphicDropdownFormField(
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(12.0)),
+                depth: -4,
+                value: name,
+                items: [
+                    DropdownMenuItem(
+                        child: Text('A'),
+                        value: 'A',
+                    ),
+                    DropdownMenuItem(
+                        child: Text('B'),
+                        value: 'B',
+                    ),
+                    DropdownMenuItem(
+                        child: Text('C'),
+                        value: 'C',
+                    ),
+                ],
                 onChanged: (value) {
                     setState(() {
-                        check2 = value;
+                        name = value;
                     });
                 },
             ),
-
-            NeumorphicCheckbox(
-                value: check3,
-                onChanged: (value) {
-                    setState(() {
-                        check3 = value;
-                    });
-                },
-            ),
-
-        ],
+        ]
     );
 }
 ```

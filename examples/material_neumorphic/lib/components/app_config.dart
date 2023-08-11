@@ -21,7 +21,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Material 3 seedColor.',
@@ -42,7 +42,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Default LightSource.',
@@ -96,7 +96,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Default Intensity.',
@@ -124,7 +124,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Default SurfaceIntensity.',
@@ -152,7 +152,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Default Depth.',
@@ -180,7 +180,7 @@ Widget appConfigDialog(BuildContext context) {
               Neumorphic(
                 margin: const EdgeInsets.all(24),
                 padding: const EdgeInsets.all(24),
-                style: neumorphicTheme.getNeumorphicStyle(),
+                style: neumorphicTheme.style,
                 child: Column(
                   children: [
                     Text('Set Default Shape.',
@@ -233,9 +233,8 @@ Widget appConfigDialog(BuildContext context) {
                 margin: const EdgeInsets.all(24),
                 width: double.infinity,
                 child: NeumorphicButton(
-                  style: neumorphicTheme
-                      .getNeumorphicStyle()
-                      .copyWith(color: theme.colorScheme.primary),
+                  style: neumorphicTheme.styleWith(
+                      color: theme.colorScheme.primary),
                   onPressed: () {
                     Navigator.pop(context);
                   },

@@ -1,53 +1,63 @@
-# Material Neumorphic Checkbox
+# Material Neumorphic TextField
 
 Part of [Material Neumorphic](https://github.com/gsmlg-dev/material_neumorphic) widgets suit.
 
 ## Usage
 
-A Neumorphic Checkbox
+A Neumorphic TextField
 
-takes a NeumorphicCheckboxStyle as `style`
-takes the current checked state as `value`
-
-notifies the parent when user interact with this widget with `onChanged`
+Add properties than origin TextField:
 
 ```dart
-bool check1 = false;
-bool check2 = false;
-bool check3 = false;
+  final NeumorphicStyle? neumorphicStyle;
+  final EdgeInsets? margin;
+  final EdgeInsets? padding;
+  final Color? color;
+  final double? depth;
+  final BorderRadius borderRadius;
+```
 
-Widget _buildChecks() {
-    return Row(
-        children: <Widget>[
+**Example:**
 
-            NeumorphicCheckbox(
-                value: check1,
+```dart
+build(context) {
+    return Column(
+        children: [
+            NeumorphicTextField(
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(12.0)),
+                depth: -4,
+                initialValue: name,
+                decoration: const InputDecoration(
+                    labelText: 'Name',
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                ),
                 onChanged: (value) {
                     setState(() {
-                        check1 = value;
+                        name = value;
                     });
                 },
             ),
-
-            NeumorphicCheckbox(
-                value: check2,
+            NeumorphicTextFormField(
+                margin: const EdgeInsets.symmetric(vertical: 12),
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(12.0)),
+                depth: -4,
+                initialValue: name,
+                decoration: const InputDecoration(
+                    labelText: 'Name',
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                ),
                 onChanged: (value) {
                     setState(() {
-                        check2 = value;
+                        name = value;
                     });
                 },
             ),
-
-            NeumorphicCheckbox(
-                value: check3,
-                onChanged: (value) {
-                    setState(() {
-                        check3 = value;
-                    });
-                },
-            ),
-
-        ],
+        ]
     );
 }
 ```

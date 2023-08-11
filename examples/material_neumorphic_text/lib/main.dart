@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
-    final NeumorphicStyle style = neumorphicTheme.getNeumorphicStyle();
+    final NeumorphicStyle style = neumorphicTheme.style;
 
     return Scaffold(
       body: NeumorphicBackground(

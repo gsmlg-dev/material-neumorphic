@@ -20,7 +20,7 @@ class LocalAppBar extends ConsumerWidget implements PreferredSizeWidget {
     final theme = Theme.of(context);
     final neumorphicTheme = theme.extension<NeumorphicTheme>()!;
     final themeMode = ref.watch(themeModeProvider);
-    final style = neumorphicTheme.getNeumorphicStyle();
+    final style = neumorphicTheme.style;
 
     return NeumorphicAppBar(
       depth: 4,
