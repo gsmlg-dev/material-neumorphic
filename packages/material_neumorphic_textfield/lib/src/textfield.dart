@@ -16,74 +16,74 @@ class NeumorphicTextField extends StatelessWidget {
   final double? depth;
   final BorderRadius borderRadius;
 
-  Key? key;
-  TextEditingController? controller;
-  FocusNode? focusNode;
-  UndoHistoryController? undoController;
-  InputDecoration? decoration = const InputDecoration();
-  TextInputType? keyboardType;
-  TextInputAction? textInputAction;
-  TextCapitalization textCapitalization;
-  TextStyle? style;
-  StrutStyle? strutStyle;
-  TextAlign textAlign = TextAlign.start;
-  TextAlignVertical? textAlignVertical;
-  TextDirection? textDirection;
-  bool readOnly = false;
-  ToolbarOptions? toolbarOptions;
-  bool? showCursor;
-  bool autofocus = false;
-  String obscuringCharacter = '•';
-  bool obscureText = false;
-  bool autocorrect = true;
-  SmartDashesType? smartDashesType;
-  SmartQuotesType? smartQuotesType;
-  bool enableSuggestions = true;
-  int? maxLines = 1;
-  int? minLines;
-  bool expands = false;
-  int? maxLength;
-  MaxLengthEnforcement? maxLengthEnforcement;
-  void Function(String)? onChanged;
-  void Function()? onEditingComplete;
-  void Function(String)? onSubmitted;
-  void Function(String, Map<String, dynamic>)? onAppPrivateCommand;
-  List<TextInputFormatter>? inputFormatters;
-  bool? enabled;
-  double cursorWidth = 2.0;
-  double? cursorHeight;
-  Radius? cursorRadius;
-  bool? cursorOpacityAnimates;
-  Color? cursorColor;
-  ui.BoxHeightStyle selectionHeightStyle;
-  ui.BoxWidthStyle selectionWidthStyle;
-  Brightness? keyboardAppearance;
-  EdgeInsets scrollPadding;
-  DragStartBehavior dragStartBehavior;
-  bool? enableInteractiveSelection;
-  TextSelectionControls? selectionControls;
-  void Function()? onTap;
-  void Function(PointerDownEvent)? onTapOutside;
-  MouseCursor? mouseCursor;
-  Widget? Function(BuildContext,
+  final Key? key;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final UndoHistoryController? undoController;
+  final InputDecoration? decoration;
+  final TextInputType? keyboardType;
+  final TextInputAction? textInputAction;
+  final TextCapitalization textCapitalization;
+  final TextStyle? style;
+  final StrutStyle? strutStyle;
+  final TextAlign textAlign;
+  final TextAlignVertical? textAlignVertical;
+  final TextDirection? textDirection;
+  final bool readOnly;
+  final ToolbarOptions? toolbarOptions;
+  final bool? showCursor;
+  final bool autofocus;
+  final String obscuringCharacter;
+  final bool obscureText;
+  final bool autocorrect;
+  final SmartDashesType? smartDashesType;
+  final SmartQuotesType? smartQuotesType;
+  final bool enableSuggestions;
+  final int? maxLines;
+  final int? minLines;
+  final bool expands;
+  final int? maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
+  final void Function(String)? onChanged;
+  final void Function()? onEditingComplete;
+  final void Function(String)? onSubmitted;
+  final void Function(String, Map<String, dynamic>)? onAppPrivateCommand;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool? enabled;
+  final double cursorWidth;
+  final double? cursorHeight;
+  final Radius? cursorRadius;
+  final bool? cursorOpacityAnimates;
+  final Color? cursorColor;
+  final ui.BoxHeightStyle selectionHeightStyle;
+  final ui.BoxWidthStyle selectionWidthStyle;
+  final Brightness? keyboardAppearance;
+  final EdgeInsets scrollPadding;
+  final DragStartBehavior dragStartBehavior;
+  final bool? enableInteractiveSelection;
+  final TextSelectionControls? selectionControls;
+  final void Function()? onTap;
+  final void Function(PointerDownEvent)? onTapOutside;
+  final MouseCursor? mouseCursor;
+  final Widget? Function(BuildContext,
       {required int currentLength,
       required bool isFocused,
       required int? maxLength})? buildCounter;
-  ScrollController? scrollController;
-  ScrollPhysics? scrollPhysics;
-  Iterable<String>? autofillHints = const <String>[];
-  ContentInsertionConfiguration? contentInsertionConfiguration;
-  Clip clipBehavior = Clip.hardEdge;
-  String? restorationId;
-  bool scribbleEnabled = true;
-  bool enableIMEPersonalizedLearning = true;
-  Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
-  bool canRequestFocus;
-  SpellCheckConfiguration? spellCheckConfiguration;
-  TextMagnifierConfiguration? magnifierConfiguration;
+  final ScrollController? scrollController;
+  final ScrollPhysics? scrollPhysics;
+  final Iterable<String>? autofillHints;
+  final ContentInsertionConfiguration? contentInsertionConfiguration;
+  final Clip clipBehavior;
+  final String? restorationId;
+  final bool scribbleEnabled;
+  final bool enableIMEPersonalizedLearning;
+  final Widget Function(BuildContext, EditableTextState)? contextMenuBuilder;
+  final bool canRequestFocus;
+  final SpellCheckConfiguration? spellCheckConfiguration;
+  final TextMagnifierConfiguration? magnifierConfiguration;
 
   NeumorphicTextField({
-    super.key,
+    this.key,
     this.neumorphicStyle,
     this.margin,
     this.padding,

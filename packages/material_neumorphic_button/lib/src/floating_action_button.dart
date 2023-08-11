@@ -40,8 +40,7 @@ class NeumorphicFloatingActionButton extends StatelessWidget {
         onPressed: this.onPressed,
         tooltip: this.tooltip,
         style: neumorphicTheme!
-            .getNeumorphicStyle()
-            .copyWith(
+            .styleWith(
               color: theme.colorScheme.primary,
               boxShape: NeumorphicBoxShape.circle(),
             )

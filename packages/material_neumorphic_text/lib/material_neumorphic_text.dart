@@ -24,11 +24,9 @@ class NeumorphicText extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final neumorphicTheme = theme.extension<NeumorphicTheme>();
-    final NeumorphicStyle style = neumorphicTheme!
-        .getNeumorphicStyle()
-        .merge(this.style)
-        .applyDisableDepth();
-    print('default text style: ${DefaultTextStyle.of(context).style}');
+    final NeumorphicStyle style =
+        neumorphicTheme!.style.merge(this.style).applyDisableDepth();
+
     return _NeumorphicText(
       textStyle: textStyle ?? DefaultTextStyle.of(context).style,
       textAlign: textAlign ??
