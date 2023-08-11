@@ -26,53 +26,71 @@ class FormScreen extends ConsumerWidget {
               child: Neumorphic(
                   margin: const EdgeInsets.all(24),
                   padding: const EdgeInsets.all(24),
-                  style: neumorphicTheme.getNeumorphicStyle().copyWith(
+                  style: neumorphicTheme.styleWith(
                       boxShape: NeumorphicBoxShape.roundRect(
                           const BorderRadius.all(Radius.circular(24)))),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Neumorphic(
+                      NeumorphicTextFormField(
                         margin: const EdgeInsets.symmetric(vertical: 12),
-                        style: neumorphicTheme.getNeumorphicStyle().copyWith(
-                            depth: -4,
-                            boxShape: NeumorphicBoxShape.roundRect(
-                                const BorderRadius.all(Radius.circular(12)))),
-                        child: TextFormField(
-                          initialValue: formData.name,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12.0)),
+                        depth: -4,
+                        initialValue: formData.name,
+                        decoration: const InputDecoration(
+                          labelText: 'Name',
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        ),
+                        onChanged: (value) {
+                          ref
+                              .read(exampleAppFormDataProvider.notifier)
+                              .updateWith(name: value);
+                        },
+                      ),
+                      NeumorphicTextFormField(
+                        margin: const EdgeInsets.symmetric(vertical: 12),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12.0)),
+                        depth: -4,
+                        initialValue: formData.email,
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        ),
+                        onChanged: (value) {
+                          ref
+                              .read(exampleAppFormDataProvider.notifier)
+                              .updateWith(email: value);
+                        },
+                      ),
+                      NeumorphicDropdownButtonFormField<int?>(
+                          margin: const EdgeInsets.symmetric(vertical: 12),
+                          depth: -4,
                           decoration: const InputDecoration(
-                            labelText: 'Name',
+                            labelText: 'Equipment',
                             contentPadding: EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 8),
                           ),
-                          onChanged: (value) {
-                            ref
-                                .read(exampleAppFormDataProvider.notifier)
-                                .updateWith(name: value);
-                          },
-                        ),
-                      ),
-                      Neumorphic(
-                        margin: const EdgeInsets.symmetric(vertical: 12),
-                        style: neumorphicTheme.getNeumorphicStyle().copyWith(
-                            depth: -4,
-                            boxShape: NeumorphicBoxShape.roundRect(
-                                const BorderRadius.all(Radius.circular(12)))),
-                        child: TextFormField(
-                          initialValue: formData.email,
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 8),
-                          ),
-                          onChanged: (value) {
-                            ref
-                                .read(exampleAppFormDataProvider.notifier)
-                                .updateWith(email: value);
-                          },
-                        ),
-                      ),
+                          items: const [
+                            DropdownMenuItem(
+                              value: 1,
+                              child: Text('Item 1'),
+                            ),
+                            DropdownMenuItem(
+                              value: 2,
+                              child: Text('Item 2'),
+                            ),
+                            DropdownMenuItem(
+                              value: 3,
+                              child: Text('Item 3'),
+                            ),
+                          ],
+                          value: null,
+                          onChanged: (value) {}),
                       Container(
                         margin: const EdgeInsets.symmetric(vertical: 12),
                         child: Row(
