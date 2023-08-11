@@ -1,3 +1,7 @@
+## 1.2.2
+
+ - **FIX**: Fix. ([82101f31](https://github.com/gsmlg-dev/material-neumorphic/commit/82101f31aff21ba5301757c83e56b4c34fc079b8))
+
 ## 1.2.1
 
  - Update a dependency to the latest release.

@@ -1,3 +1,7 @@
+## 1.2.1
+
+ - Update a dependency to the latest release.
+
 ## 1.2.0
 
  - **FEAT**: add material_neumorphic_textfield adn material_neumorphic_dropdown. ([46eb4038](https://github.com/gsmlg-dev/material-neumorphic/commit/46eb4038a9d14654296cb32457c7a7db273388a4))

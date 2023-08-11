@@ -1,7 +1,7 @@
 name: material_neumorphic_checkbox
 description: |
   A Flutter package for creating Neumorphic checkbox.
-version: 1.1.3
+version: 1.1.4
 repository: https://github.com/gsmlg-dev/material-neumorphic.git
 
 environment:
@@ -10,8 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  material_neumorphic_theme: ^1.1.2
-  material_neumorphic_button: ^1.2.1
+  material_neumorphic_theme: ^1.1.3
+  material_neumorphic_button: ^1.2.2
 
 dev_dependencies:
   flutter_test:

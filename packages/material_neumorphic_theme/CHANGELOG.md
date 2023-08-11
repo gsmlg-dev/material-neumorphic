@@ -1,3 +1,7 @@
+## 1.1.3
+
+ - **FIX**: Fix. ([977f590f](https://github.com/gsmlg-dev/material-neumorphic/commit/977f590fdc618188395d844710841416c5d5bd42))
+
 ## 1.1.2
 
  - **FIX**: Move colors to theme. ([06edbe49](https://github.com/gsmlg-dev/material-neumorphic/commit/06edbe49da8d9647d6361e89cfc0c1015e755a24))
